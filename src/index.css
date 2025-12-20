@@ -1,96 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 220 20% 6%;
+    --foreground: 150 10% 92%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 220 18% 10%;
+    --card-foreground: 150 10% 92%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 18% 10%;
+    --popover-foreground: 150 10% 92%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 160 100% 45%;
+    --primary-foreground: 220 20% 6%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 35 60% 45%;
+    --secondary-foreground: 35 30% 95%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 15% 15%;
+    --muted-foreground: 220 10% 55%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 175 70% 40%;
+    --accent-foreground: 220 20% 6%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 160 100% 45%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Custom Linfy Colors */
+    --cyber-green: 160 100% 45%;
+    --cyber-teal: 175 70% 40%;
+    --cyber-glow: 160 100% 50%;
+    --earth-amber: 35 60% 45%;
+    --earth-brown: 25 40% 30%;
+    --earth-sand: 40 30% 70%;
+    --terminal-bg: 220 25% 8%;
+    --terminal-border: 160 50% 25%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Gradients */
+    --gradient-cyber: linear-gradient(135deg, hsl(160, 100%, 45%) 0%, hsl(175, 70%, 40%) 100%);
+    --gradient-earth: linear-gradient(135deg, hsl(35, 60%, 45%) 0%, hsl(25, 40%, 30%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(220, 20%, 6%) 0%, hsl(220, 25%, 10%) 50%, hsl(220, 20%, 6%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(220, 18%, 12%) 0%, hsl(220, 18%, 8%) 100%);
 
-    --sidebar-primary: 240 5.9% 10%;
+    /* Shadows */
+    --shadow-cyber: 0 0 30px hsl(160, 100%, 45%, 0.2);
+    --shadow-glow: 0 0 60px hsl(160, 100%, 50%, 0.15);
+    --shadow-card: 0 10px 40px hsl(0, 0%, 0%, 0.3);
 
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar */
+    --sidebar-background: 220 20% 8%;
+    --sidebar-foreground: 150 10% 92%;
+    --sidebar-primary: 160 100% 45%;
+    --sidebar-primary-foreground: 220 20% 6%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 150 10% 92%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 160 100% 45%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 220 20% 6%;
+    --foreground: 150 10% 92%;
   }
 }
 
@@ -100,6 +80,131 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .font-sans {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .text-gradient-cyber {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-cyber);
+  }
+
+  .text-gradient-earth {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-earth);
+  }
+
+  .border-glow {
+    box-shadow: var(--shadow-cyber);
+  }
+
+  .terminal-card {
+    @apply relative overflow-hidden rounded-lg border;
+    background: var(--gradient-card);
+    border-color: hsl(var(--terminal-border));
+  }
+
+  .terminal-card::before {
+    content: '';
+    @apply absolute inset-0 opacity-5;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      hsl(var(--cyber-green) / 0.03) 2px,
+      hsl(var(--cyber-green) / 0.03) 4px
+    );
+  }
+
+  .glitch-text {
+    position: relative;
+  }
+
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 2px;
+    top: 0;
+    color: hsl(var(--cyber-teal));
+    opacity: 0;
+    animation: glitch 3s infinite;
+  }
+
+  @keyframes glitch {
+    0%, 90%, 100% { opacity: 0; }
+    92%, 94%, 96%, 98% { 
+      opacity: 0.8;
+      left: -2px;
+    }
+    93%, 95%, 97%, 99% { 
+      opacity: 0.8;
+      left: 2px;
+    }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .grid-pattern {
+    background-image: 
+      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .scanline {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scanline::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      transparent 50%,
+      hsl(var(--cyber-green) / 0.02) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  .typing-cursor::after {
+    content: '|';
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
   }
 }
