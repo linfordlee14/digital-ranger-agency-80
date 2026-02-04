@@ -3,6 +3,7 @@ import { Send, MapPin, Mail, Linkedin, Github, CheckCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { GlassCard } from '@/components/ui/glass-card';
 import { useToast } from '@/hooks/use-toast';
 
 const ContactSection = () => {
@@ -37,21 +38,24 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-24 lg:py-32 relative overflow-hidden">
-      <div className="absolute inset-0 grid-pattern opacity-20" />
+    <section id="contact" className="py-24 lg:py-32 bg-deep-space-light/50 relative overflow-hidden">
+      <div className="absolute inset-0 grid-pattern opacity-10" />
       
       {/* Glow Effects */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-cyber-green/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-earth-amber/5 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-0 w-96 h-96 bg-neon-cyan/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-bio-green/5 rounded-full blur-3xl" />
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block font-mono text-sm text-cyber-green mb-4 px-3 py-1 rounded border border-terminal-border bg-terminal-bg/50">
-            {'>'} ESTABLISH_CONNECTION
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/[0.1] bg-white/[0.02] backdrop-blur-sm mb-6">
+            <span className="w-2 h-2 rounded-full bg-bio-green" />
+            <span className="text-sm text-muted-foreground uppercase tracking-widest">
+              Get In Touch
+            </span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            Let's <span className="text-gradient-cyber">Connect</span>
+            Let's <span className="text-gradient-bio">Connect</span>
           </h2>
           <p className="text-lg text-muted-foreground">
             Ready to secure your infrastructure or contribute to conservation tech? 
@@ -59,16 +63,9 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Contact Form */}
-          <div className="terminal-card p-6 lg:p-8">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-3 h-3 rounded-full bg-destructive" />
-              <div className="w-3 h-3 rounded-full bg-earth-amber" />
-              <div className="w-3 h-3 rounded-full bg-cyber-green" />
-              <span className="ml-2 font-mono text-xs text-muted-foreground">contact_form.tsx</span>
-            </div>
-
+          <GlassCard className="p-6 lg:p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
@@ -82,7 +79,7 @@ const ContactSection = () => {
                     onChange={handleChange}
                     placeholder="Your name"
                     required
-                    className="bg-terminal-bg border-terminal-border focus:border-cyber-green"
+                    className="bg-white/[0.02] border-white/[0.1] focus:border-neon-cyan/50 focus:ring-neon-cyan/20"
                   />
                 </div>
                 <div>
@@ -97,7 +94,7 @@ const ContactSection = () => {
                     onChange={handleChange}
                     placeholder="your@email.com"
                     required
-                    className="bg-terminal-bg border-terminal-border focus:border-cyber-green"
+                    className="bg-white/[0.02] border-white/[0.1] focus:border-neon-cyan/50 focus:ring-neon-cyan/20"
                   />
                 </div>
               </div>
@@ -113,7 +110,7 @@ const ContactSection = () => {
                   onChange={handleChange}
                   placeholder="How can we help?"
                   required
-                  className="bg-terminal-bg border-terminal-border focus:border-cyber-green"
+                  className="bg-white/[0.02] border-white/[0.1] focus:border-neon-cyan/50 focus:ring-neon-cyan/20"
                 />
               </div>
 
@@ -129,21 +126,19 @@ const ContactSection = () => {
                   placeholder="Tell us about your project or inquiry..."
                   rows={5}
                   required
-                  className="bg-terminal-bg border-terminal-border focus:border-cyber-green resize-none"
+                  className="bg-white/[0.02] border-white/[0.1] focus:border-neon-cyan/50 focus:ring-neon-cyan/20 resize-none"
                 />
               </div>
 
               <Button
                 type="submit"
-                variant="cyber"
+                variant="gradient"
                 size="lg"
                 className="w-full"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
-                  <>
-                    <span className="animate-pulse">Sending...</span>
-                  </>
+                  <span className="animate-pulse">Sending...</span>
                 ) : (
                   <>
                     <Send className="w-4 h-4" />
@@ -152,65 +147,69 @@ const ContactSection = () => {
                 )}
               </Button>
             </form>
-          </div>
+          </GlassCard>
 
           {/* Contact Info */}
           <div className="space-y-6">
             {/* Info Card */}
-            <div className="terminal-card p-6">
+            <GlassCard className="p-6">
               <h3 className="text-xl font-bold text-foreground mb-4">Get in Touch</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-earth-amber mt-0.5" />
+                  <div className="w-10 h-10 rounded-lg bg-bio-green/10 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-5 h-5 text-bio-green" />
+                  </div>
                   <div>
                     <p className="font-medium text-foreground">Location</p>
                     <p className="text-sm text-muted-foreground">Africa-based, Globally Connected</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Mail className="w-5 h-5 text-cyber-green mt-0.5" />
+                  <div className="w-10 h-10 rounded-lg bg-neon-cyan/10 flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-5 h-5 text-neon-cyan" />
+                  </div>
                   <div>
                     <p className="font-medium text-foreground">Email</p>
-                    <a href="mailto:hello@linfytech.com" className="text-sm text-cyber-green hover:underline">
+                    <a href="mailto:hello@linfytech.com" className="text-sm text-neon-cyan hover:underline">
                       hello@linfytech.com
                     </a>
                   </div>
                 </div>
               </div>
-            </div>
+            </GlassCard>
 
             {/* Social Links */}
-            <div className="terminal-card p-6">
+            <GlassCard className="p-6">
               <h3 className="text-xl font-bold text-foreground mb-4">Follow Our Work</h3>
               <div className="flex gap-3">
-                <Button variant="terminal" size="lg" asChild>
+                <Button variant="glass" size="lg" asChild>
                   <a href="https://github.com" target="_blank" rel="noopener noreferrer">
                     <Github className="w-5 h-5" />
                     GitHub
                   </a>
                 </Button>
-                <Button variant="terminal" size="lg" asChild>
+                <Button variant="glass" size="lg" asChild>
                   <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
                     <Linkedin className="w-5 h-5" />
                     LinkedIn
                   </a>
                 </Button>
               </div>
-            </div>
+            </GlassCard>
 
             {/* Quick Info */}
-            <div className="terminal-card p-6 bg-cyber-green/5 border-cyber-green/20">
+            <GlassCard className="p-6" variant="glow">
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-cyber-green mt-0.5" />
+                <CheckCircle className="w-5 h-5 text-bio-green mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="font-medium text-foreground mb-1">Response Time</p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     We typically respond within 24 hours. For urgent security matters, 
                     please indicate in your subject line.
                   </p>
                 </div>
               </div>
-            </div>
+            </GlassCard>
           </div>
         </div>
       </div>

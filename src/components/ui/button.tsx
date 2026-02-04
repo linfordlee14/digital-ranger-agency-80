@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -15,17 +15,26 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        cyber: "bg-cyber-green text-background font-mono uppercase tracking-wider hover:bg-cyber-teal hover:shadow-lg hover:shadow-cyber-green/30 border border-cyber-green/50",
-        "cyber-outline": "border-2 border-cyber-green text-cyber-green font-mono uppercase tracking-wider hover:bg-cyber-green/10 hover:shadow-lg hover:shadow-cyber-green/20",
-        earth: "bg-earth-amber text-background font-semibold hover:bg-earth-brown hover:shadow-lg hover:shadow-earth-amber/20",
-        "earth-outline": "border-2 border-earth-amber text-earth-amber font-semibold hover:bg-earth-amber/10",
-        terminal: "bg-terminal-bg border border-terminal-border text-cyber-green font-mono hover:border-cyber-green hover:shadow-lg hover:shadow-cyber-green/10",
+        
+        // Enterprise Gradient Button
+        gradient: "bg-gradient-to-r from-neon-cyan to-bio-green text-deep-space font-semibold hover:shadow-lg hover:shadow-neon-cyan/30 hover:brightness-110",
+        
+        // Glass Variants
+        glass: "bg-white/[0.05] backdrop-blur-sm border border-white/[0.1] text-foreground hover:bg-white/[0.1] hover:border-white/[0.2]",
+        "glass-outline": "bg-transparent backdrop-blur-sm border border-white/[0.15] text-foreground hover:bg-white/[0.05] hover:border-neon-cyan/50 hover:text-neon-cyan",
+        
+        // Legacy variants updated to new palette
+        cyber: "bg-neon-cyan text-deep-space font-semibold hover:bg-neon-cyan/90 hover:shadow-lg hover:shadow-neon-cyan/30",
+        "cyber-outline": "border-2 border-neon-cyan text-neon-cyan font-semibold hover:bg-neon-cyan/10 hover:shadow-lg hover:shadow-neon-cyan/20",
+        earth: "bg-bio-green text-deep-space font-semibold hover:bg-bio-green/90 hover:shadow-lg hover:shadow-bio-green/20",
+        "earth-outline": "border-2 border-bio-green text-bio-green font-semibold hover:bg-bio-green/10",
+        terminal: "bg-deep-space-light border border-white/[0.1] text-neon-cyan font-mono hover:border-neon-cyan/50 hover:shadow-lg hover:shadow-neon-cyan/10",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
-        lg: "h-12 rounded-md px-8 text-base",
-        xl: "h-14 rounded-lg px-10 text-lg",
+        lg: "h-12 rounded-lg px-8 text-base",
+        xl: "h-14 rounded-xl px-10 text-lg",
         icon: "h-10 w-10",
       },
     },
