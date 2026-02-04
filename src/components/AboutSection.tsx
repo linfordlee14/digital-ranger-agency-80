@@ -67,12 +67,12 @@ const AboutSection = () => {
                 <p className="text-neon-cyan text-sm mb-4">Founder & Lead Engineer</p>
                 <div className="flex gap-2">
                   <Button variant="glass" size="sm" asChild>
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/linfordlee14" target="_blank" rel="noopener noreferrer">
                       <Github className="w-4 h-4" />
                     </a>
                   </Button>
                   <Button variant="glass" size="sm" asChild>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://linkedin.com/in/linfordlee14" target="_blank" rel="noopener noreferrer">
                       <Linkedin className="w-4 h-4" />
                     </a>
                   </Button>
@@ -89,7 +89,7 @@ const AboutSection = () => {
               </p>
               <p>
                 Based in Africa, he founded Linfy Tech Solutions to prove that technology can be 
-                a force for good—defending businesses from cyber threats while simultaneously 
+                a force for good-defending businesses from cyber threats while simultaneously 
                 protecting endangered species from extinction.
               </p>
             </div>
