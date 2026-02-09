@@ -1,4 +1,5 @@
 import { Github, Linkedin, Shield, TreePine, Database, Code } from 'lucide-react';
+import founderImg from '@/assets/founder.jpg';
 import { Button } from '@/components/ui/button';
 import { GlassCard } from '@/components/ui/glass-card';
 
@@ -60,7 +61,7 @@ const AboutSection = () => {
             {/* Profile Header */}
             <div className="flex items-start gap-6 mb-6">
               <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-neon-cyan/20 to-bio-green/20 border border-white/[0.1] flex items-center justify-center flex-shrink-0">
-                <span className="text-2xl font-bold text-gradient-bio">LM</span>
+                <img src={founderImg} alt="Linford Musiyambodza" className="w-full h-full object-cover rounded-2xl" />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-foreground mb-1">Linford Musiyambodza</h3>
