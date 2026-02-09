@@ -1,13 +1,15 @@
 
 
-## Update Footer Logo
+## Add Founder Photo to About Section
 
-Replace the generic Shield icon in the Footer with the custom `LinfyLogo` component (icon-only mode), matching the Navigation.
+Replace the "LM" initials placeholder in the About section with the uploaded founder photo.
 
 ### Changes
 
-**File: `src/components/Footer.tsx`**
-- Import `LinfyLogo` component
-- Remove `Shield` import from lucide-react
-- Replace the gradient shield div with `<LinfyLogo iconOnly />` in the logo section
+**Copy file:**
+- Copy `user-uploads://founder.jpg` to `src/assets/founder.jpg`
+
+**File: `src/components/AboutSection.tsx`**
+- Import the founder image: `import founderImg from '@/assets/founder.jpg'`
+- Replace the initials div (line 62-64) with an `<img>` tag using the imported image, styled with `rounded-2xl`, `object-cover`, and matching the existing `w-20 h-20` dimensions plus the border styling
 
