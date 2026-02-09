@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Menu, X, Shield } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import LinfyLogo from '@/components/LinfyLogo';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,18 +26,8 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-neon-cyan to-bio-green flex items-center justify-center">
-              <Shield className="w-5 h-5 text-deep-space" />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-semibold text-lg text-foreground tracking-tight">
-                Linfy Tech
-              </span>
-              <span className="text-[10px] text-muted-foreground uppercase tracking-widest">
-                Solutions
-              </span>
-            </div>
+          <a href="#" className="flex items-center group">
+            <LinfyLogo />
           </a>
 
           {/* Desktop Navigation */}
