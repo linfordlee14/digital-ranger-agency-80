@@ -60,7 +60,7 @@ const AboutSection = () => {
           <GlassCard className="p-6 lg:p-8">
             {/* Profile Header */}
             <div className="flex items-start gap-6 mb-6">
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-neon-cyan/20 to-bio-green/20 border border-white/[0.1] flex items-center justify-center flex-shrink-0">
+              <div className="w-28 h-28 rounded-2xl bg-gradient-to-br from-neon-cyan/20 to-bio-green/20 border border-neon-cyan/30 flex items-center justify-center flex-shrink-0 shadow-[0_0_20px_rgba(0,245,212,0.15)]">
                 <img src={founderImg} alt="Linford Musiyambodza" className="w-full h-full object-cover rounded-2xl" />
               </div>
               <div>
