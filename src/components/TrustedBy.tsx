@@ -1,11 +1,13 @@
+import { Cloud, Terminal, Brain, Database, Box, Container } from 'lucide-react';
+
 const TrustedBy = () => {
-  const logos = [
-    { name: 'AWS', text: 'AWS' },
-    { name: 'Python', text: 'Python' },
-    { name: 'TensorFlow', text: 'TensorFlow' },
-    { name: 'PostgreSQL', text: 'PostgreSQL' },
-    { name: 'Docker', text: 'Docker' },
-    { name: 'Kubernetes', text: 'Kubernetes' },
+  const techs = [
+    { name: 'AWS', icon: Cloud },
+    { name: 'Python', icon: Terminal },
+    { name: 'TensorFlow', icon: Brain },
+    { name: 'PostgreSQL', icon: Database },
+    { name: 'Docker', icon: Box },
+    { name: 'Kubernetes', icon: Container },
   ];
 
   return (
@@ -15,14 +17,13 @@ const TrustedBy = () => {
           Built With Industry-Leading Technologies
         </p>
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-          {logos.map((logo) => (
+          {techs.map((tech) => (
             <div
-              key={logo.name}
-              className="text-muted-foreground/40 hover:text-muted-foreground/70 transition-colors duration-300"
+              key={tech.name}
+              className="flex flex-col items-center gap-2 text-slate-500 hover:text-neon-cyan hover:drop-shadow-[0_0_8px_rgba(0,240,255,0.5)] transition-all duration-300 cursor-default"
             >
-              <span className="font-mono text-lg md:text-xl font-semibold tracking-tight">
-                {logo.text}
-              </span>
+              <tech.icon className="w-7 h-7 md:w-8 md:h-8" />
+              <span className="text-xs font-mono tracking-tight">{tech.name}</span>
             </div>
           ))}
         </div>

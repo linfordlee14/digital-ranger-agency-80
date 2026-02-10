@@ -17,15 +17,15 @@ const BentoGrid = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/[0.1] bg-white/[0.02] backdrop-blur-sm mb-6">
             <span className="w-2 h-2 rounded-full bg-neon-cyan animate-pulse" />
             <span className="text-sm text-muted-foreground uppercase tracking-widest">
-              Our Solutions
+              Enterprise Platforms
             </span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            Enterprise-Grade <span className="text-gradient-bio">Protection</span>
+            Our <span className="text-gradient-bio">Platforms</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive solutions for cybersecurity, conservation technology, 
-            and digital transformation.
+            See how our technology is making a real difference in cybersecurity,
+            conservation, and digital transformation.
           </p>
         </div>
 
@@ -102,34 +102,47 @@ const BentoGrid = () => {
             </div>
           </GlassCard>
 
-          {/* Medium Card - CyberSentinel */}
+          {/* Medium Card - CyberSentinel with Threat Dashboard */}
           <GlassCard className="group p-6 lg:p-8">
             <div className="flex flex-col h-full">
-              <div className="w-14 h-14 rounded-xl bg-neon-cyan/10 flex items-center justify-center mb-6 relative">
-                <Lock className="w-7 h-7 text-neon-cyan" />
-                <div className="absolute inset-0 rounded-xl bg-neon-cyan/20 animate-ping opacity-30" />
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-neon-cyan/10 flex items-center justify-center relative">
+                  <Lock className="w-6 h-6 text-neon-cyan" />
+                  <div className="absolute inset-0 rounded-xl bg-neon-cyan/20 animate-ping opacity-30" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-foreground">CyberSentinel</h3>
+                  <p className="text-sm text-muted-foreground">Enterprise Security Dashboard</p>
+                </div>
               </div>
 
-              <h3 className="text-xl font-bold text-foreground mb-2">CyberSentinel</h3>
-              <p className="text-sm text-muted-foreground mb-4">Enterprise Security Dashboard</p>
-
-              <p className="text-muted-foreground text-sm mb-6 flex-1">
+              <p className="text-muted-foreground text-sm mb-4">
                 Real-time threat detection, vulnerability assessment, and incident response 
                 for organizations across Africa.
               </p>
 
-              <div className="space-y-3 mb-6">
-                <div className="flex items-center gap-2 text-sm">
-                  <CheckCircle className="w-4 h-4 text-neon-cyan" />
-                  <span className="text-foreground">24/7 Threat Monitoring</span>
+              {/* Threat Dashboard */}
+              <div className="flex-1 bg-deep-space-light rounded-xl border border-white/[0.05] p-4 mb-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs text-muted-foreground uppercase tracking-wider">Threat Dashboard</span>
+                  <div className="flex items-center gap-2">
+                    <Activity className="w-4 h-4 text-neon-cyan animate-pulse" />
+                    <span className="text-xs text-neon-cyan font-medium">LIVE</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <CheckCircle className="w-4 h-4 text-neon-cyan" />
-                  <span className="text-foreground">Automated Scanning</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <CheckCircle className="w-4 h-4 text-neon-cyan" />
-                  <span className="text-foreground">Compliance Reports</span>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-3 text-sm p-2.5 rounded-lg bg-bio-green/5 border border-bio-green/10">
+                    <Lock className="w-4 h-4 text-bio-green" />
+                    <span className="text-foreground">Firewall: Active</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-sm p-2.5 rounded-lg bg-bio-green/5 border border-bio-green/10">
+                    <Shield className="w-4 h-4 text-bio-green" />
+                    <span className="text-foreground">IDS: Online</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-sm p-2.5 rounded-lg bg-amber-400/5 border border-amber-400/10">
+                    <AlertTriangle className="w-4 h-4 text-amber-400" />
+                    <span className="text-foreground">1 Alert Flagged</span>
+                  </div>
                 </div>
               </div>
 
@@ -175,12 +188,12 @@ const BentoGrid = () => {
             </div>
           </GlassCard>
 
-          {/* Additional Services Row */}
-          <GlassCard className="lg:col-span-2 group p-6">
+          {/* Full-width AI Card */}
+          <GlassCard className="lg:col-span-3 group p-6 lg:p-8">
             <div className="flex flex-col md:flex-row md:items-center gap-6">
               <div className="flex-1">
-                <h3 className="text-lg font-bold text-foreground mb-2">Data Analytics & AI</h3>
-                <p className="text-muted-foreground text-sm">
+                <h3 className="text-xl font-bold text-foreground mb-2">Data Analytics & AI</h3>
+                <p className="text-muted-foreground">
                   Custom machine learning solutions for threat prediction, pattern recognition, 
                   and automated decision-making across security and conservation domains.
                 </p>
