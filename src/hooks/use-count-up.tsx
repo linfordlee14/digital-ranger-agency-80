@@ -15,7 +15,7 @@ export const useCountUp = ({
   prefix = '',
   decimals = 0 
 }: UseCountUpOptions) => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(end);
   const [isVisible, setIsVisible] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -48,6 +48,7 @@ export const useCountUp = ({
       return;
     }
 
+    setCount(0);
     let startTime: number;
     let animationFrame: number;
 

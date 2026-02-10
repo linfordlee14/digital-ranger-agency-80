@@ -1,5 +1,5 @@
 import { Github, Linkedin, Shield, TreePine, Database, Code } from 'lucide-react';
-import founderImg from '@/assets/founder.jpg';
+const founderImg = "https://res.cloudinary.com/dwoucnp06/image/upload/v1770676539/founder_nbajq2.jpg";
 import { Button } from '@/components/ui/button';
 import { GlassCard } from '@/components/ui/glass-card';
 
@@ -61,7 +61,7 @@ const AboutSection = () => {
             {/* Profile Header */}
             <div className="flex items-start gap-6 mb-6">
               <div className="w-28 h-28 rounded-2xl bg-gradient-to-br from-neon-cyan/20 to-bio-green/20 border border-neon-cyan/30 flex items-center justify-center flex-shrink-0 shadow-[0_0_20px_rgba(0,245,212,0.15)]">
-                <img src={founderImg} alt="Linford Musiyambodza" className="w-full h-full object-cover rounded-2xl" />
+                <img src={founderImg} alt="Linford Musiyambodza" className="w-full h-full object-cover rounded-2xl" loading="lazy" width={112} height={112} />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-foreground mb-1">Linford Musiyambodza</h3>

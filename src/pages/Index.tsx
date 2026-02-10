@@ -4,7 +4,7 @@ import HeroSection from '@/components/HeroSection';
 import MetricsBar from '@/components/MetricsBar';
 import MissionSection from '@/components/MissionSection';
 import BentoGrid from '@/components/BentoGrid';
-import ProjectsSection from '@/components/ProjectsSection';
+import AIChatWidget from '@/components/AIChatWidget';
 import AboutSection from '@/components/AboutSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
@@ -32,11 +32,11 @@ const Index = () => {
           <MetricsBar />
           <MissionSection />
           <BentoGrid />
-          <ProjectsSection />
           <AboutSection />
           <ContactSection />
         </main>
         <Footer />
+        <AIChatWidget />
       </div>
     </>
   );
