@@ -8,21 +8,39 @@ interface Message {
   sender: 'bot' | 'user';
 }
 
+const STORAGE_KEY = 'linfy-chat-history';
+const DEFAULT_GREETING: Message = {
+  id: 1,
+  text: "Hello! I'm Linfy AI. How can I help you secure your data or protect wildlife today?",
+  sender: 'bot',
+};
+
+const loadMessages = (): Message[] => {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+    }
+  } catch {}
+  return [DEFAULT_GREETING];
+};
+
 const AIChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 1,
-      text: "Hello! I'm Linfy AI. How can I help you secure your data or protect wildlife today?",
-      sender: 'bot',
-    },
-  ]);
+  const [messages, setMessages] = useState<Message[]>(loadMessages);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+    } catch {}
   }, [messages]);
 
   const handleSend = async () => {

@@ -57,37 +57,47 @@ serve(async (req) => {
     // Add the current user message
     contents.push({ role: "user", parts: [{ text: message }] });
 
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
-          contents,
-        }),
-      }
-    );
+    const models = ["gemini-2.0-flash", "gemini-1.5-flash"];
+    const requestBody = JSON.stringify({
+      system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+      contents,
+    });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error("Gemini API error:", errorText);
-      return new Response(
-        JSON.stringify({
-          reply: "I'm having trouble connecting right now. Please try again in a moment.",
-        }),
-        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    let lastError = "";
+    for (const model of models) {
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: requestBody,
+        }
       );
+
+      if (response.ok) {
+        const data = await response.json();
+        const reply =
+          data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+          "I couldn't generate a response. Please try again.";
+        return new Response(JSON.stringify({ reply }), {
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+
+      lastError = await response.text();
+      console.error(`${model} error (${response.status}):`, lastError);
+
+      // Only fallback on 429 (quota) or 404 (model not found)
+      if (response.status !== 429 && response.status !== 404) break;
     }
 
-    const data = await response.json();
-    const reply =
-      data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-      "I couldn't generate a response. Please try again.";
+    return new Response(
+      JSON.stringify({
+        reply: "I'm having trouble connecting right now. Please try again in a moment.",
+      }),
+      { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
 
-    return new Response(JSON.stringify({ reply }), {
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
   } catch (error) {
     console.error("Chat function error:", error);
     return new Response(
