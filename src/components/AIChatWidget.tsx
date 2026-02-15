@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send } from 'lucide-react';
+import { MessageCircle, X, Send, Loader2 } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
 
 interface Message {
   id: number;
@@ -17,29 +18,53 @@ const AIChatWidget = () => {
     },
   ]);
   const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  const handleSend = () => {
-    if (!input.trim()) return;
+  const handleSend = async () => {
+    if (!input.trim() || isLoading) return;
 
     const userMsg: Message = { id: Date.now(), text: input.trim(), sender: 'user' };
+    const currentInput = input.trim();
     setMessages((prev) => [...prev, userMsg]);
     setInput('');
+    setIsLoading(true);
 
-    setTimeout(() => {
+    try {
+      // Send conversation history (excluding the initial greeting)
+      const history = messages.slice(1).map((m) => ({ text: m.text, sender: m.sender }));
+
+      const { data, error } = await supabase.functions.invoke('chat', {
+        body: { message: currentInput, history },
+      });
+
+      if (error) throw error;
+
       setMessages((prev) => [
         ...prev,
         {
           id: Date.now() + 1,
-          text: "Thanks for your message! Backend coming soon. In the meantime, feel free to explore our platforms above.",
+          text: data?.reply || "I couldn't generate a response. Please try again.",
           sender: 'bot',
         },
       ]);
-    }, 800);
+    } catch (err) {
+      console.error('Chat error:', err);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now() + 1,
+          text: "I'm having trouble connecting right now. Please try again in a moment.",
+          sender: 'bot',
+        },
+      ]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -84,6 +109,14 @@ const AIChatWidget = () => {
                 </div>
               </div>
             ))}
+            {isLoading && (
+              <div className="flex justify-start">
+                <div className="max-w-[80%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed bg-neon-cyan/10 border border-neon-cyan/15 text-muted-foreground rounded-bl-md flex items-center gap-2">
+                  <Loader2 className="w-3 h-3 animate-spin" />
+                  Linfy AI is typing...
+                </div>
+              </div>
+            )}
             <div ref={messagesEndRef} />
           </div>
 
@@ -96,11 +129,13 @@ const AIChatWidget = () => {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                 placeholder="Type a message..."
-                className="flex-1 bg-white/[0.03] border border-white/[0.08] rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-neon-cyan/30"
+                disabled={isLoading}
+                className="flex-1 bg-white/[0.03] border border-white/[0.08] rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-neon-cyan/30 disabled:opacity-50"
               />
               <button
                 onClick={handleSend}
-                className="p-2.5 rounded-xl bg-gradient-to-r from-neon-cyan to-bio-green text-background hover:opacity-90 transition-opacity"
+                disabled={isLoading}
+                className="p-2.5 rounded-xl bg-gradient-to-r from-neon-cyan to-bio-green text-background hover:opacity-90 transition-opacity disabled:opacity-50"
               >
                 <Send className="w-4 h-4" />
               </button>
