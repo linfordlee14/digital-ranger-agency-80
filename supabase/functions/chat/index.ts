@@ -41,10 +41,8 @@ serve(async (req) => {
 
     const { message, history } = await req.json();
 
-    // Build conversation contents for Gemini
     const contents: Array<{ role: string; parts: Array<{ text: string }> }> = [];
 
-    // Add conversation history
     if (history && Array.isArray(history)) {
       for (const msg of history) {
         contents.push({
@@ -54,59 +52,47 @@ serve(async (req) => {
       }
     }
 
-    // Add the current user message
     contents.push({ role: "user", parts: [{ text: message }] });
 
-    const models = ["gemini-2.0-flash-lite", "gemini-2.0-flash"];
-    const requestBody = JSON.stringify({
-      system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
-      contents,
-    });
-
-    let lastError = "";
-    for (const model of models) {
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: requestBody,
-        }
-      );
-
-      if (response.ok) {
-        const data = await response.json();
-        const reply =
-          data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-          "I couldn't generate a response. Please try again.";
-        return new Response(JSON.stringify({ reply }), {
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+          contents,
+        }),
       }
-
-      lastError = await response.text();
-      console.error(`${model} error (${response.status}):`, lastError);
-
-      if (response.status === 429) {
-        return new Response(
-          JSON.stringify({
-            reply: "I'm receiving too many messages right now. Please try again in 30 seconds.",
-          }),
-          { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-        );
-      }
-
-      // Only fallback on 404 (model not found); break on other errors
-      if (response.status !== 404) break;
-    }
-
-    return new Response(
-      JSON.stringify({
-        reply: "I'm having trouble connecting right now. Please try again in a moment.",
-      }),
-      { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
 
+    if (response.status === 429) {
+      return new Response(
+        JSON.stringify({
+          reply: "I'm receiving too many messages right now. Please try again in 30 seconds.",
+        }),
+        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    if (!response.ok) {
+      console.error(`Gemini error (${response.status}):`, await response.text());
+      return new Response(
+        JSON.stringify({
+          reply: "I'm having trouble connecting right now. Please try again in a moment.",
+        }),
+        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const data = await response.json();
+    const reply =
+      data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+      "I couldn't generate a response. Please try again.";
+
+    return new Response(JSON.stringify({ reply }), {
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
   } catch (error) {
     console.error("Chat function error:", error);
     return new Response(
