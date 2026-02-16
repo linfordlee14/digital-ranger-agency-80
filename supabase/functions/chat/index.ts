@@ -1,4 +1,4 @@
-import "https://deno.land/x/xhr@0.1.0/mod.ts";
+import { GoogleGenerativeAI } from "https://esm.sh/@google/generative-ai@0.21.0";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const corsHeaders = {
@@ -23,6 +23,26 @@ const SYSTEM_PROMPT = `You are Linfy AI, the official assistant for Linfy Tech â
 - Be friendly, professional, and enthusiastic about the mission.
 - If you don't know something specific about Linfy Tech, say so honestly and suggest contacting the team.`;
 
+async function generateWithModel(apiKey: string, modelName: string, message: string, history: Array<{ sender: string; text: string }>) {
+  const genAI = new GoogleGenerativeAI(apiKey);
+  const model = genAI.getGenerativeModel({ model: modelName });
+
+  const chat = model.startChat({
+    history: [
+      { role: "user", parts: [{ text: SYSTEM_PROMPT }] },
+      { role: "model", parts: [{ text: "Understood. I am Linfy AI, ready to help!" }] },
+      ...history.map(msg => ({
+        role: msg.sender === "user" ? "user" : "model",
+        parts: [{ text: msg.text }],
+      })),
+    ],
+  });
+
+  const result = await chat.sendMessage(message);
+  const response = await result.response;
+  return response.text();
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -40,55 +60,30 @@ serve(async (req) => {
     }
 
     const { message, history } = await req.json();
+    const chatHistory = history && Array.isArray(history) ? history : [];
 
-    const contents: Array<{ role: string; parts: Array<{ text: string }> }> = [];
-
-    if (history && Array.isArray(history)) {
-      for (const msg of history) {
-        contents.push({
-          role: msg.sender === "user" ? "user" : "model",
-          parts: [{ text: msg.text }],
-        });
+    let reply: string;
+    try {
+      reply = await generateWithModel(apiKey, "gemini-2.0-flash", message, chatHistory);
+    } catch (primaryError: any) {
+      const status = primaryError?.status || primaryError?.message || "";
+      if (String(status).includes("429") || String(status).includes("404")) {
+        console.warn(`gemini-2.0-flash failed (${status}), falling back to gemini-2.0-flash-lite`);
+        try {
+          reply = await generateWithModel(apiKey, "gemini-2.0-flash-lite", message, chatHistory);
+        } catch (fallbackError) {
+          console.error("Fallback also failed:", fallbackError);
+          return new Response(
+            JSON.stringify({
+              reply: "I'm receiving too many messages right now. Please try again in 30 seconds.",
+            }),
+            { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+          );
+        }
+      } else {
+        throw primaryError;
       }
     }
-
-    contents.push({ role: "user", parts: [{ text: message }] });
-
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
-          contents,
-        }),
-      }
-    );
-
-    if (response.status === 429) {
-      return new Response(
-        JSON.stringify({
-          reply: "I'm receiving too many messages right now. Please try again in 30 seconds.",
-        }),
-        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    }
-
-    if (!response.ok) {
-      console.error(`Gemini error (${response.status}):`, await response.text());
-      return new Response(
-        JSON.stringify({
-          reply: "I'm having trouble connecting right now. Please try again in a moment.",
-        }),
-        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    }
-
-    const data = await response.json();
-    const reply =
-      data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-      "I couldn't generate a response. Please try again.";
 
     return new Response(JSON.stringify({ reply }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
