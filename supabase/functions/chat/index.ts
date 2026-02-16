@@ -57,7 +57,7 @@ serve(async (req) => {
     // Add the current user message
     contents.push({ role: "user", parts: [{ text: message }] });
 
-    const models = ["gemini-2.0-flash", "gemini-1.5-flash"];
+    const models = ["gemini-2.0-flash-lite", "gemini-2.0-flash"];
     const requestBody = JSON.stringify({
       system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
       contents,
@@ -87,8 +87,17 @@ serve(async (req) => {
       lastError = await response.text();
       console.error(`${model} error (${response.status}):`, lastError);
 
-      // Only fallback on 429 (quota) or 404 (model not found)
-      if (response.status !== 429 && response.status !== 404) break;
+      if (response.status === 429) {
+        return new Response(
+          JSON.stringify({
+            reply: "I'm receiving too many messages right now. Please try again in 30 seconds.",
+          }),
+          { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+
+      // Only fallback on 404 (model not found); break on other errors
+      if (response.status !== 404) break;
     }
 
     return new Response(
