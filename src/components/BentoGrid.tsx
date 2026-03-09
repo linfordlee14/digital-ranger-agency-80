@@ -186,8 +186,8 @@ const BentoGrid = () => {
                 </div>
               </div>
 
-              <Button variant="glass" className="w-full">
-                View Projects
+              <Button variant="glass" className="w-full" onClick={scrollToContact}>
+                Start a Project
               </Button>
             </div>
           </GlassCard>
