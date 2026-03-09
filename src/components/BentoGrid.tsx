@@ -3,6 +3,10 @@ import { GlassCard } from '@/components/ui/glass-card';
 import { Button } from '@/components/ui/button';
 
 const BentoGrid = () => {
+  const scrollToContact = () => {
+    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section id="services" className="py-24 lg:py-32 relative overflow-hidden">
       <div className="absolute inset-0 grid-pattern opacity-10" />
