@@ -69,7 +69,7 @@ const HeroSection = () => {
               className="group"
             >
               <FileText className="w-5 h-5" />
-              View Documentation
+              Learn About Us
             </Button>
           </div>
         </div>

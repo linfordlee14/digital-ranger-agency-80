@@ -200,13 +200,13 @@ const ContactSection = () => {
               <h3 className="text-xl font-bold text-foreground mb-4">Follow Our Work</h3>
               <div className="flex gap-3">
                 <Button variant="glass" size="lg" asChild>
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                  <a href="https://github.com/linfordlee14" target="_blank" rel="noopener noreferrer">
                     <Github className="w-5 h-5" />
                     GitHub
                   </a>
                 </Button>
                 <Button variant="glass" size="lg" asChild>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                  <a href="https://linkedin.com/in/linfordlee14" target="_blank" rel="noopener noreferrer">
                     <Linkedin className="w-5 h-5" />
                     LinkedIn
                   </a>

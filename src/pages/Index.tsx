@@ -22,6 +22,7 @@ const Index = () => {
         <meta property="og:title" content="Linfy Tech Solutions | Cybersecurity & Conservation Technology" />
         <meta property="og:description" content="Advanced Cybersecurity, AI Analytics, and Conservation Tech for a resilient world." />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://linfytech.com/og-image.png" />
         <link rel="canonical" href="https://linfytech.com" />
       </Helmet>
       

@@ -202,8 +202,8 @@ const BentoGrid = () => {
                   and automated decision-making across security and conservation domains.
                 </p>
               </div>
-              <Button variant="glass-outline">
-                Explore AI Solutions
+              <Button variant="glass-outline" onClick={scrollToContact}>
+                Discuss AI Solutions
               </Button>
             </div>
           </GlassCard>

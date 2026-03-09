@@ -47,7 +47,9 @@ const AIChatWidget = () => {
   }, [messages]);
 
   const handleSend = async () => {
-    if (!input.trim() || isLoading) return;
+    const now = Date.now();
+    if (!input.trim() || isLoading || now - lastSentAt < COOLDOWN_MS) return;
+    setLastSentAt(now);
 
     const userMsg: Message = { id: Date.now(), text: input.trim(), sender: 'user' };
     const currentInput = input.trim();
