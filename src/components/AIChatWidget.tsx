@@ -26,11 +26,14 @@ const loadMessages = (): Message[] => {
   return [DEFAULT_GREETING];
 };
 
+const COOLDOWN_MS = 2000;
+
 const AIChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>(loadMessages);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [lastSentAt, setLastSentAt] = useState(0);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
