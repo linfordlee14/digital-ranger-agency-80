@@ -21,16 +21,32 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      const { error } = await supabase.from('contact_submissions').insert({
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        subject: formData.subject.trim(),
+        message: formData.message.trim(),
+      });
 
-    toast({
-      title: "Message Sent Successfully",
-      description: "Thank you for reaching out. We'll get back to you within 24 hours.",
-    });
+      if (error) throw error;
 
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setIsSubmitting(false);
+      toast({
+        title: "Message Sent Successfully",
+        description: "Thank you for reaching out. We'll get back to you within 24 hours.",
+      });
+
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error('Contact form error:', error);
+      toast({
+        title: "Error Sending Message",
+        description: "Something went wrong. Please try again or email us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
