@@ -100,8 +100,8 @@ const BentoGrid = () => {
                 </div>
               </div>
 
-              <Button variant="gradient" className="w-full md:w-auto md:self-start">
-                Explore Platform
+              <Button variant="gradient" className="w-full md:w-auto md:self-start" onClick={scrollToContact}>
+                Get in Touch
               </Button>
             </div>
           </GlassCard>
