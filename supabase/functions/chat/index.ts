@@ -1,4 +1,3 @@
-import { GoogleGenerativeAI } from "https://esm.sh/@google/generative-ai@0.21.0";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const corsHeaders = {
@@ -23,33 +22,13 @@ const SYSTEM_PROMPT = `You are Linfy AI, the official assistant for Linfy Tech â
 - Be friendly, professional, and enthusiastic about the mission.
 - If you don't know something specific about Linfy Tech, say so honestly and suggest contacting the team.`;
 
-async function generateWithModel(apiKey: string, modelName: string, message: string, history: Array<{ sender: string; text: string }>) {
-  const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({ model: modelName });
-
-  const chat = model.startChat({
-    history: [
-      { role: "user", parts: [{ text: SYSTEM_PROMPT }] },
-      { role: "model", parts: [{ text: "Understood. I am Linfy AI, ready to help!" }] },
-      ...history.map(msg => ({
-        role: msg.sender === "user" ? "user" : "model",
-        parts: [{ text: msg.text }],
-      })),
-    ],
-  });
-
-  const result = await chat.sendMessage(message);
-  const response = await result.response;
-  return response.text();
-}
-
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const apiKey = Deno.env.get("GEMINI_API_KEY");
+    const apiKey = Deno.env.get("LOVABLE_API_KEY");
     if (!apiKey) {
       return new Response(
         JSON.stringify({
@@ -62,28 +41,53 @@ serve(async (req) => {
     const { message, history } = await req.json();
     const chatHistory = history && Array.isArray(history) ? history : [];
 
-    let reply: string;
-    try {
-      reply = await generateWithModel(apiKey, "gemini-2.0-flash", message, chatHistory);
-    } catch (primaryError: any) {
-      const status = primaryError?.status || primaryError?.message || "";
-      if (String(status).includes("429") || String(status).includes("404")) {
-        console.warn(`gemini-2.0-flash failed (${status}), falling back to gemini-2.0-flash-lite`);
-        try {
-          reply = await generateWithModel(apiKey, "gemini-2.0-flash-lite", message, chatHistory);
-        } catch (fallbackError) {
-          console.error("Fallback also failed:", fallbackError);
-          return new Response(
-            JSON.stringify({
-              reply: "I'm receiving too many messages right now. Please try again in 30 seconds.",
-            }),
-            { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-          );
-        }
-      } else {
-        throw primaryError;
+    // Build messages array in OpenAI-compatible format
+    const messages = [
+      { role: "system", content: SYSTEM_PROMPT },
+      ...chatHistory.map((msg: { sender: string; text: string }) => ({
+        role: msg.sender === "user" ? "user" : "assistant",
+        content: msg.text,
+      })),
+      { role: "user", content: message },
+    ];
+
+    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "google/gemini-3-flash-preview",
+        messages,
+        stream: false,
+      }),
+    });
+
+    if (!response.ok) {
+      if (response.status === 429) {
+        return new Response(
+          JSON.stringify({
+            reply: "I'm receiving too many messages right now. Please try again in a moment.",
+          }),
+          { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
       }
+      if (response.status === 402) {
+        return new Response(
+          JSON.stringify({
+            reply: "The AI service needs attention. Please contact the team.",
+          }),
+          { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+      const errorText = await response.text();
+      console.error("AI gateway error:", response.status, errorText);
+      throw new Error(`AI gateway error: ${response.status}`);
     }
+
+    const data = await response.json();
+    const reply = data.choices?.[0]?.message?.content || "I couldn't generate a response. Please try again.";
 
     return new Response(JSON.stringify({ reply }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
