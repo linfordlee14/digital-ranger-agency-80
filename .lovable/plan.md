@@ -1,26 +1,21 @@
 
 
-# Switch Chat Backend to Lovable AI Gateway
+# Refactor: Use Official Google Generative AI SDK
 
 ## What Changes
 
-Replace the Google Generative AI SDK in `supabase/functions/chat/index.ts` with the Lovable AI Gateway. This eliminates the Gemini free-tier rate limit issues entirely since `LOVABLE_API_KEY` is already configured.
+Replace the raw `fetch` call in `supabase/functions/chat/index.ts` with the official `@google/generative-ai` SDK imported from `esm.sh`. This handles endpoint routing, request formatting, and response parsing automatically -- eliminating the 404/429 issues caused by manual URL construction.
 
 ## Technical Details
 
 ### File: `supabase/functions/chat/index.ts`
 
-- Remove `@google/generative-ai` import and `generateWithModel` helper
-- Call `https://ai.gateway.lovable.dev/v1/chat/completions` with `LOVABLE_API_KEY`
-- Use `google/gemini-3-flash-preview` as the model (recommended default)
-- Send the existing `SYSTEM_PROMPT` as a system message, map conversation history to OpenAI-compatible `messages` format
-- Non-streaming (use `supabase.functions.invoke` on client)
-- Handle 429 (rate limit) and 402 (payment required) errors with friendly messages
-- Keep CORS headers, demo mode check, and system prompt unchanged
+1. **Replace import**: Swap `import "https://deno.land/x/xhr@0.1.0/mod.ts"` with `import { GoogleGenerativeAI } from "https://esm.sh/@google/generative-ai@0.1.3"`
+2. **SDK initialization**: Create `GoogleGenerativeAI` instance with the API key and get the `gemini-1.5-flash` model via `getGenerativeModel()`
+3. **Chat API**: Use `model.startChat()` with mapped history and `systemInstruction: SYSTEM_PROMPT`, then `chat.sendMessage(message)` to get the reply
+4. **Fallback**: If `gemini-1.5-flash` throws a 429 or 404 error, retry with `gemini-pro` as a backup model
+5. **Error handling**: Wrap in try/catch; return friendly JSON messages for rate limits (429) and general errors
+6. **Keep unchanged**: CORS headers, system prompt, demo mode check, conversation history format
 
-### File: `src/components/AIChatWidget.tsx`
-
-- No changes needed — already uses `supabase.functions.invoke('chat', ...)` and reads `data.reply`
-
-### No other files affected
+### No other files are affected.
 
