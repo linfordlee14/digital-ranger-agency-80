@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { GlassCard } from '@/components/ui/glass-card';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -20,16 +21,32 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      const { error } = await supabase.from('contact_submissions').insert({
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        subject: formData.subject.trim(),
+        message: formData.message.trim(),
+      });
 
-    toast({
-      title: "Message Sent Successfully",
-      description: "Thank you for reaching out. We'll get back to you within 24 hours.",
-    });
+      if (error) throw error;
 
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setIsSubmitting(false);
+      toast({
+        title: "Message Sent Successfully",
+        description: "Thank you for reaching out. We'll get back to you within 24 hours.",
+      });
+
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error('Contact form error:', error);
+      toast({
+        title: "Error Sending Message",
+        description: "Something went wrong. Please try again or email us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -183,13 +200,13 @@ const ContactSection = () => {
               <h3 className="text-xl font-bold text-foreground mb-4">Follow Our Work</h3>
               <div className="flex gap-3">
                 <Button variant="glass" size="lg" asChild>
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                  <a href="https://github.com/linfordlee14" target="_blank" rel="noopener noreferrer">
                     <Github className="w-5 h-5" />
                     GitHub
                   </a>
                 </Button>
                 <Button variant="glass" size="lg" asChild>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                  <a href="https://linkedin.com/in/linfordlee14" target="_blank" rel="noopener noreferrer">
                     <Linkedin className="w-5 h-5" />
                     LinkedIn
                   </a>

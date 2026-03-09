@@ -3,6 +3,10 @@ import { GlassCard } from '@/components/ui/glass-card';
 import { Button } from '@/components/ui/button';
 
 const BentoGrid = () => {
+  const scrollToContact = () => {
+    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section id="services" className="py-24 lg:py-32 relative overflow-hidden">
       <div className="absolute inset-0 grid-pattern opacity-10" />
@@ -96,8 +100,8 @@ const BentoGrid = () => {
                 </div>
               </div>
 
-              <Button variant="gradient" className="w-full md:w-auto md:self-start">
-                Explore Platform
+              <Button variant="gradient" className="w-full md:w-auto md:self-start" onClick={scrollToContact}>
+                Get in Touch
               </Button>
             </div>
           </GlassCard>
@@ -146,8 +150,8 @@ const BentoGrid = () => {
                 </div>
               </div>
 
-              <Button variant="glass" className="w-full">
-                Learn More
+              <Button variant="glass" className="w-full" onClick={scrollToContact}>
+                Contact Us
               </Button>
             </div>
           </GlassCard>
@@ -182,8 +186,8 @@ const BentoGrid = () => {
                 </div>
               </div>
 
-              <Button variant="glass" className="w-full">
-                View Projects
+              <Button variant="glass" className="w-full" onClick={scrollToContact}>
+                Start a Project
               </Button>
             </div>
           </GlassCard>
@@ -198,8 +202,8 @@ const BentoGrid = () => {
                   and automated decision-making across security and conservation domains.
                 </p>
               </div>
-              <Button variant="glass-outline">
-                Explore AI Solutions
+              <Button variant="glass-outline" onClick={scrollToContact}>
+                Discuss AI Solutions
               </Button>
             </div>
           </GlassCard>
