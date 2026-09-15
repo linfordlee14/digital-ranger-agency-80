@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --linfy-blue: #0a6ed1;
+  --linfy-orange: #ff7a2d;
+  --linfy-green: #a3e635;
+  --linfy-charcoal: #111827;
+  --linfy-slate: #6b7280;
+  --linfy-gray: #f3f4f6;
+  --background: 0 0% 100%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+  --primary: 210 91% 43%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 84 81% 56%;
+  --secondary-foreground: 222 47% 11%;
+  --muted: 220 14% 96%;
+  --muted-foreground: 220 9% 46%;
+  --accent: 24 100% 59%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 13% 91%;
+  --input: 220 13% 91%;
+  --ring: 210 91% 43%;
+  --radius: 0.75rem;
+}
+
+* {
+  box-sizing: border-box;
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  min-width: 320px;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: Aptos, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #dbeafe;
+  color: #111827;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  p {
+    margin: 0;
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  summary {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  summary:focus-visible {
+    outline: 3px solid var(--linfy-blue);
+    outline-offset: 3px;
+  }
+
+  button:not(:disabled),
+  summary {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .text-display {
+    @apply font-display text-4xl font-semibold leading-[1.05] tracking-[-0.035em] text-slate-900 sm:text-5xl lg:text-6xl;
+  }
+
+  .text-heading-1 {
+    @apply font-display text-3xl font-semibold leading-tight tracking-[-0.025em] text-slate-900 sm:text-4xl;
+  }
+
+  .text-heading-2 {
+    @apply font-display text-2xl font-semibold leading-tight tracking-[-0.02em] text-slate-900 sm:text-3xl;
+  }
+
+  .text-heading-3 {
+    @apply font-display text-xl font-semibold leading-snug tracking-[-0.015em] text-slate-900;
+  }
+
+  .text-body {
+    @apply text-base leading-7 text-slate-700;
+  }
+
+  .text-small {
+    @apply text-sm leading-6 text-slate-600;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

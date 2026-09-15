@@ -1,73 +1,48 @@
-# Welcome to your Lovable project
+# Linfy Tech Solutions
 
-## Project info
+The Linfy Tech commercial website is built with Next.js, TypeScript, Tailwind CSS, and Supabase.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Local Development
 
-## How can I edit this code?
+1. Install dependencies with `npm ci`.
+2. Copy `.env.example` to `.env.local` and set the required values.
+3. Run `npm run dev`.
 
-There are several ways of editing your application.
+## Commands
 
-**Use Lovable**
+- `npm run dev` starts the development server.
+- `npm run lint` checks the codebase.
+- `npm run typecheck` checks TypeScript types.
+- `npm run test` runs server-side assessment tests.
+- `npm run test:e2e` runs browser assessment tests on a supported environment with Playwright Chromium installed.
+- `npm run build` creates the production build.
+- `npm run start` runs the production build locally.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Configuration
 
-Changes made via Lovable will be committed automatically to this repo.
+Configuration is supplied through environment variables. Never commit `.env.local` or server-only credentials. The approved production domain is `https://linfytech.co.za`.
 
-**Use your preferred IDE**
+### Assessment Environment Variables
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Set these values in the target Vercel environment before enabling real assessment submissions:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- `NEXT_PUBLIC_SUPABASE_URL`: Supabase project URL. This is public project configuration.
+- `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`: Supabase publishable key. This is public project configuration.
+- `SUPABASE_SERVICE_ROLE_KEY`: server-only Supabase service-role key. Never prefix it with `NEXT_PUBLIC_`.
+- `RATE_LIMIT_SALT`: unique random server-only value used to hash rate-limit keys.
+- `LEAD_DATA_RETENTION_MONTHS`: configurable retention target. The current approved target is `24`, subject to privacy/legal review.
 
-Follow these steps:
+### Assessment Production Integration Gate
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. Identify the intended Supabase staging or production project before making any change.
+2. Authenticate the Supabase CLI, link only that confirmed project, and apply `supabase/migrations/20260915090000_assessment_funnel.sql` through the normal migration workflow.
+3. Confirm the migration removes the legacy anonymous `contact_submissions` policies and creates `leads`, `automation_assessments`, and `submission_rate_limits`.
+4. Set the assessment environment variables in the matching Vercel environment, then redeploy.
+5. Submit one controlled assessment using a clearly identifiable test business/email. Verify the lead, assessment, source attribution, consent timestamp, and audit status through a privileged database connection only.
+6. Confirm anonymous access cannot read or write protected assessment tables, and verify that a rapid repeat receives a rate-limit response.
+7. Record the test lead/assessment IDs and remove the controlled records through an authorized database process once verification is complete.
+8. Run `npm run test:e2e` in CI or another supported environment with Playwright Chromium installed. macOS 12 cannot install the required Playwright Chromium binary.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Do not use the service-role key in browser code, analytics scripts, or public environment variables.
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+See [Infrastructure Handoff](docs/infrastructure-handoff.md) for the staging/production checklist, variable ownership, and verification steps.
