@@ -12,7 +12,7 @@ interface FieldLabelProps extends ComponentPropsWithoutRef<"label"> {
 
 export function FieldLabel({ children, className, required = false, ...props }: FieldLabelProps) {
   return (
-    <label className={cn("block text-sm font-semibold text-slate-900", className)} {...props}>
+    <label className={cn("block text-sm font-semibold text-foreground", className)} {...props}>
       {children}
       {required ? <span aria-hidden="true" className="ml-1 text-red-700">*</span> : null}
       {required ? <span className="sr-only"> (required)</span> : null}
@@ -21,7 +21,7 @@ export function FieldLabel({ children, className, required = false, ...props }: 
 }
 
 const fieldClassName =
-  "block min-h-11 w-full rounded-lg border bg-white px-3 py-2.5 text-base text-slate-900 placeholder:text-slate-500 transition-colors hover:border-slate-300 focus:border-brand-blue focus:outline-none disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-500";
+  "block min-h-11 w-full rounded-lg border bg-card px-3 py-2.5 text-base text-foreground placeholder:text-muted-foreground transition-colors hover:border-foreground/30 focus:border-brand-blue focus:outline-none disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground";
 
 interface TextInputProps extends ComponentPropsWithoutRef<"input"> {
   error?: boolean;
@@ -31,7 +31,7 @@ export function TextInput({ className, error = false, ...props }: TextInputProps
   return (
     <input
       aria-invalid={error || undefined}
-      className={cn(fieldClassName, error ? "border-red-700 focus:border-red-700" : "border-slate-300", className)}
+      className={cn(fieldClassName, error ? "border-red-700 focus:border-red-700" : "border-border", className)}
       {...props}
     />
   );
@@ -45,7 +45,7 @@ export function TextArea({ className, error = false, ...props }: TextAreaProps) 
   return (
     <textarea
       aria-invalid={error || undefined}
-      className={cn(fieldClassName, "min-h-28 resize-y", error ? "border-red-700 focus:border-red-700" : "border-slate-300", className)}
+      className={cn(fieldClassName, "min-h-28 resize-y", error ? "border-red-700 focus:border-red-700" : "border-border", className)}
       {...props}
     />
   );
@@ -59,7 +59,7 @@ export function Select({ children, className, error = false, ...props }: SelectP
   return (
     <select
       aria-invalid={error || undefined}
-      className={cn(fieldClassName, error ? "border-red-700 focus:border-red-700" : "border-slate-300", className)}
+      className={cn(fieldClassName, error ? "border-red-700 focus:border-red-700" : "border-border", className)}
       {...props}
     >
       {children}
@@ -76,7 +76,7 @@ export function Checkbox({ className, error = false, ...props }: CheckboxProps) 
     <input
       aria-invalid={error || undefined}
       className={cn(
-        "size-5 rounded border-slate-300 text-brand-blue accent-[#0A6ED1] disabled:cursor-not-allowed disabled:opacity-50",
+        "size-5 rounded border-border text-brand-blue accent-[#0A6ED1] disabled:cursor-not-allowed disabled:opacity-50",
         error && "border-red-700",
         className,
       )}
@@ -87,7 +87,7 @@ export function Checkbox({ className, error = false, ...props }: CheckboxProps) 
 }
 
 export function FieldHint({ className, ...props }: ComponentPropsWithoutRef<"p">) {
-  return <p className={cn("text-sm leading-6 text-slate-600", className)} {...props} />;
+  return <p className={cn("text-sm leading-6 text-muted-foreground", className)} {...props} />;
 }
 
 export function FieldError({ className, ...props }: ComponentPropsWithoutRef<"p">) {

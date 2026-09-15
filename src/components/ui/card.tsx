@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 export function Card({ className, ...props }: ComponentPropsWithoutRef<"article">) {
   return (
     <article
-      className={cn("rounded-xl border border-slate-200 bg-white shadow-card transition-[border-color,box-shadow] duration-200 hover:border-slate-300 hover:shadow-card-hover", className)}
+      className={cn("rounded-xl border border-border bg-card shadow-card transition-[border-color,box-shadow] duration-200 hover:border-foreground/30 hover:shadow-card-hover", className)}
       {...props}
     />
   );
@@ -31,5 +31,5 @@ export function CardContent({ className, ...props }: ComponentPropsWithoutRef<"d
 }
 
 export function CardFooter({ className, ...props }: ComponentPropsWithoutRef<"div">) {
-  return <div className={cn("flex items-center gap-3 border-t border-slate-200 px-6 py-4 sm:px-8", className)} {...props} />;
+  return <div className={cn("flex items-center gap-3 border-t border-border px-6 py-4 sm:px-8", className)} {...props} />;
 }

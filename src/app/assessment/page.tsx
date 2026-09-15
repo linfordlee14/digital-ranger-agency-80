@@ -23,7 +23,7 @@ export default async function AssessmentPage({ searchParams }: AssessmentPagePro
 
   return (
     <main id="main-content">
-      <Section className="bg-slate-50 py-12 sm:py-16 lg:py-20">
+      <Section className="bg-muted/60 py-12 sm:py-16 lg:py-20">
         <Container className="max-w-5xl">
           <div className="max-w-3xl">
             <Eyebrow>Automation Assessment</Eyebrow>

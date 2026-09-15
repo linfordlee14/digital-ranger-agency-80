@@ -17,7 +17,7 @@ export function NavigationLinks({ className, items }: NavigationLinksProps) {
     <nav aria-label="Primary navigation" className={cn("flex items-center gap-1", className)}>
       {items.map((item) => (
         <Link
-          className="rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 hover:text-slate-950"
+          className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
           href={item.href}
           key={item.href}
         >
@@ -36,11 +36,11 @@ interface MobileNavigationProps {
 export function MobileNavigation({ items }: MobileNavigationProps) {
   return (
     <details className="relative lg:hidden">
-      <summary className="list-none rounded-md px-3 py-2 text-sm font-semibold text-slate-800 transition-colors hover:bg-slate-100 [&::-webkit-details-marker]:hidden">
+      <summary className="list-none rounded-md px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted [&::-webkit-details-marker]:hidden">
         Menu
       </summary>
       <NavigationLinks
-        className="absolute right-0 top-[calc(100%+0.5rem)] w-56 flex-col items-stretch rounded-xl border border-slate-200 bg-white p-2 shadow-card"
+        className="absolute right-0 top-[calc(100%+0.5rem)] w-56 flex-col items-stretch rounded-xl border border-border bg-card p-2 shadow-card"
         items={items}
       />
     </details>

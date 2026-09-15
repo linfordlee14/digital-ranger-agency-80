@@ -128,12 +128,12 @@ function ChoiceCheckboxGroup({
 
   return (
     <fieldset aria-describedby={error ? errorId : undefined}>
-      <legend className="text-sm font-semibold text-slate-900">{legend}</legend>
+      <legend className="text-sm font-semibold text-foreground">{legend}</legend>
       <div className="mt-3 grid gap-3 sm:grid-cols-2">
         {options.map((option) => {
           const id = `${errorId}-${option.value}`;
           return (
-            <label className="flex min-h-12 items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 hover:border-slate-300" htmlFor={id} key={option.value}>
+            <label className="flex min-h-12 items-center gap-3 rounded-lg border border-border bg-card px-3 py-2 text-sm text-foreground hover:border-foreground/30" htmlFor={id} key={option.value}>
               <Checkbox checked={selected.includes(option.value)} id={id} onChange={() => onToggle(option.value)} />
               <span>{option.label}</span>
             </label>
@@ -250,7 +250,7 @@ export function AssessmentForm({ sourceCta }: AssessmentFormProps) {
           <CardTitle>Your submission was received.</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-base leading-7 text-slate-700">
+          <p className="text-base leading-7 text-foreground">
             Linfy will review your submission and contact you about whether an Automation Audit is appropriate.
           </p>
         </CardContent>
@@ -263,7 +263,7 @@ export function AssessmentForm({ sourceCta }: AssessmentFormProps) {
       <div className="mb-8">
         <div aria-label="Assessment progress" className="flex items-center justify-between gap-4" role="progressbar" aria-valuemax={assessmentSteps.length} aria-valuemin={1} aria-valuenow={currentStep + 1} aria-valuetext={`Step ${currentStep + 1} of ${assessmentSteps.length}: ${step.label}`}>
           <p className="text-sm font-semibold text-brand-blue">Step {currentStep + 1} of {assessmentSteps.length}</p>
-          <p className="text-sm text-slate-600">{step.label}</p>
+          <p className="text-sm text-muted-foreground">{step.label}</p>
         </div>
         <div aria-hidden="true" className="mt-3 h-2 overflow-hidden rounded-full bg-slate-200">
           <div className="h-full rounded-full bg-brand-blue transition-[width] motion-reduce:transition-none" style={{ width: `${progress}%` }} />
@@ -273,7 +273,7 @@ export function AssessmentForm({ sourceCta }: AssessmentFormProps) {
             <li className="shrink-0" key={item.id}>
               <button
                 aria-current={index === currentStep ? "step" : undefined}
-                className="whitespace-nowrap rounded-md px-2 py-1 text-xs font-medium text-slate-600 hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-60"
+                className="whitespace-nowrap rounded-md px-2 py-1 text-xs font-medium text-muted-foreground hover:bg-muted disabled:cursor-not-allowed disabled:opacity-60"
                 disabled={index > currentStep}
                 onClick={() => setCurrentStep(index)}
                 type="button"
@@ -322,7 +322,7 @@ export function AssessmentForm({ sourceCta }: AssessmentFormProps) {
                 {firstError(errors, "teamSize") ? <FieldError id="teamSize-error">{firstError(errors, "teamSize")}</FieldError> : null}
               </Field>
               <Field className="sm:col-span-2">
-                <FieldLabel htmlFor="website">Website <span className="font-normal text-slate-600">(optional)</span></FieldLabel>
+                <FieldLabel htmlFor="website">Website <span className="font-normal text-muted-foreground">(optional)</span></FieldLabel>
                 <TextInput aria-describedby={firstError(errors, "website") ? "website-error" : "website-hint"} error={Boolean(firstError(errors, "website"))} id="website" onChange={(event) => updateText("website", event.target.value)} placeholder="https://example.com" type="url" value={values.website} />
                 {firstError(errors, "website") ? <FieldError id="website-error">{firstError(errors, "website")}</FieldError> : <FieldHint id="website-hint">Include https:// if you add a website.</FieldHint>}
               </Field>
@@ -337,7 +337,7 @@ export function AssessmentForm({ sourceCta }: AssessmentFormProps) {
                 {firstError(errors, "businessEmail") ? <FieldError id="businessEmail-error">{firstError(errors, "businessEmail")}</FieldError> : null}
               </Field>
               <Field className="sm:col-span-2">
-                <FieldLabel htmlFor="phone">Phone or WhatsApp <span className="font-normal text-slate-600">(optional)</span></FieldLabel>
+                <FieldLabel htmlFor="phone">Phone or WhatsApp <span className="font-normal text-muted-foreground">(optional)</span></FieldLabel>
                 <TextInput autoComplete="tel" id="phone" onChange={(event) => updateText("phone", event.target.value)} type="tel" value={values.phone} />
               </Field>
             </div>
@@ -421,18 +421,18 @@ export function AssessmentForm({ sourceCta }: AssessmentFormProps) {
                 {firstError(errors, "urgency") ? <FieldError id="urgency-error">{firstError(errors, "urgency")}</FieldError> : null}
               </Field>
               <Field>
-                <FieldLabel htmlFor="budget">Have you allocated a budget? <span className="font-normal text-slate-600">(optional)</span></FieldLabel>
+                <FieldLabel htmlFor="budget">Have you allocated a budget? <span className="font-normal text-muted-foreground">(optional)</span></FieldLabel>
                 <Select id="budget" onChange={(event) => updateText("budget", event.target.value as AssessmentFormValues["budget"])} value={values.budget}>
                   <option value="">Prefer not to say</option>
                   {budgetOptions.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
                 </Select>
               </Field>
               <fieldset aria-describedby={firstError(errors, "auditInterest") ? "auditInterest-error" : undefined}>
-                <legend className="text-sm font-semibold text-slate-900">Would you be interested in a paid Automation Audit starting from R1,500?</legend>
+                <legend className="text-sm font-semibold text-foreground">Would you be interested in a paid Automation Audit starting from R1,500?</legend>
                 <div className="mt-3 space-y-3">
                   {auditInterestOptions.map((option) => (
-                    <label className="flex min-h-12 items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 hover:border-slate-300" htmlFor={`auditInterest-${option.value}`} key={option.value}>
-                      <input checked={values.auditInterest === option.value} className="size-5 border-slate-300 text-brand-blue accent-[#0A6ED1]" id={`auditInterest-${option.value}`} name="auditInterest" onChange={() => updateText("auditInterest", option.value)} type="radio" value={option.value} />
+                    <label className="flex min-h-12 items-center gap-3 rounded-lg border border-border bg-card px-3 py-2 text-sm text-foreground hover:border-foreground/30" htmlFor={`auditInterest-${option.value}`} key={option.value}>
+                      <input checked={values.auditInterest === option.value} className="size-5 border-border text-brand-blue accent-[#0A6ED1]" id={`auditInterest-${option.value}`} name="auditInterest" onChange={() => updateText("auditInterest", option.value)} type="radio" value={option.value} />
                       <span>{option.label}</span>
                     </label>
                   ))}
@@ -448,7 +448,7 @@ export function AssessmentForm({ sourceCta }: AssessmentFormProps) {
                 Linfy will review your submission and contact you about whether an Automation Audit is appropriate. Submitting this form does not guarantee an audit, automation, savings, or a particular outcome.
               </StatusMessage>
               <fieldset aria-describedby={firstError(errors, "consent") ? "consent-error" : undefined}>
-                <label className="flex items-start gap-3 rounded-lg border border-slate-200 bg-white p-4 text-sm leading-6 text-slate-700" htmlFor="consent">
+                <label className="flex items-start gap-3 rounded-lg border border-border bg-card p-4 text-sm leading-6 text-foreground" htmlFor="consent">
                   <Checkbox checked={values.consent} id="consent" onChange={(event) => updateText("consent", event.target.checked)} />
                   <span>I agree that Linfy may use this submission to review whether an Automation Audit is appropriate and contact me about it.</span>
                 </label>

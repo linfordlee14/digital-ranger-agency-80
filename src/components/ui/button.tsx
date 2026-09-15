@@ -13,8 +13,8 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary: "bg-brand-orange text-slate-900 shadow-sm hover:bg-[#eb6820] hover:shadow-md active:bg-[#d95816]",
-        secondary: "border border-brand-blue bg-white text-brand-blue hover:bg-blue-50 active:bg-blue-100",
-        tertiary: "text-brand-blue hover:bg-blue-50 active:bg-blue-100",
+        secondary: "border border-brand-blue bg-card text-brand-blue hover:bg-muted active:bg-border",
+        tertiary: "text-brand-blue hover:bg-muted active:bg-border",
         destructive: "bg-red-700 text-white hover:bg-red-800 active:bg-red-900",
       },
       size: {

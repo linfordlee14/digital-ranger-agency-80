@@ -3,12 +3,14 @@
 @tailwind utilities;
 
 :root {
+  color-scheme: light;
   --linfy-blue: #0a6ed1;
   --linfy-orange: #ff7a2d;
   --linfy-green: #a3e635;
   --linfy-charcoal: #111827;
   --linfy-slate: #6b7280;
   --linfy-gray: #f3f4f6;
+  --linfy-blue-accessible: #0a6ed1;
   --background: 0 0% 100%;
   --foreground: 222 47% 11%;
   --card: 0 0% 100%;
@@ -29,6 +31,43 @@
   --input: 220 13% 91%;
   --ring: 210 91% 43%;
   --radius: 0.75rem;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --background: 222 47% 8%;
+  --foreground: 210 40% 96%;
+  --card: 222 38% 13%;
+  --card-foreground: 210 40% 96%;
+  --popover: 222 38% 13%;
+  --popover-foreground: 210 40% 96%;
+  --primary-foreground: 0 0% 100%;
+  --secondary-foreground: 222 47% 11%;
+  --muted: 217 33% 18%;
+  --muted-foreground: 215 20% 72%;
+  --accent-foreground: 222 47% 11%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 217 24% 28%;
+  --input: 217 24% 28%;
+  --ring: 210 91% 62%;
+  --linfy-blue-accessible: #72b7ff;
+}
+
+/* The dark theme keeps the brand hue while using a contrast-safe text tint. */
+[data-theme="dark"] .text-brand-blue {
+  color: var(--linfy-blue-accessible);
+}
+
+[data-theme="dark"] .border-brand-blue {
+  border-color: var(--linfy-blue-accessible);
+}
+
+[data-theme="dark"] .text-red-700 {
+  color: #fca5a5;
+}
+
+[data-theme="dark"] .border-red-700 {
+  border-color: #fca5a5;
 }
 
 * {
@@ -91,27 +130,27 @@ body {
 
 @layer components {
   .text-display {
-    @apply font-display text-4xl font-semibold leading-[1.05] tracking-[-0.035em] text-slate-900 sm:text-5xl lg:text-6xl;
+    @apply font-display text-4xl font-semibold leading-[1.05] tracking-[-0.035em] text-foreground sm:text-5xl lg:text-6xl;
   }
 
   .text-heading-1 {
-    @apply font-display text-3xl font-semibold leading-tight tracking-[-0.025em] text-slate-900 sm:text-4xl;
+    @apply font-display text-3xl font-semibold leading-tight tracking-[-0.025em] text-foreground sm:text-4xl;
   }
 
   .text-heading-2 {
-    @apply font-display text-2xl font-semibold leading-tight tracking-[-0.02em] text-slate-900 sm:text-3xl;
+    @apply font-display text-2xl font-semibold leading-tight tracking-[-0.02em] text-foreground sm:text-3xl;
   }
 
   .text-heading-3 {
-    @apply font-display text-xl font-semibold leading-snug tracking-[-0.015em] text-slate-900;
+    @apply font-display text-xl font-semibold leading-snug tracking-[-0.015em] text-foreground;
   }
 
   .text-body {
-    @apply text-base leading-7 text-slate-700;
+    @apply text-base leading-7 text-foreground;
   }
 
   .text-small {
-    @apply text-sm leading-6 text-slate-600;
+    @apply text-sm leading-6 text-muted-foreground;
   }
 }
 

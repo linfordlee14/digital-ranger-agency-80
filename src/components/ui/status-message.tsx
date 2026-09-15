@@ -7,9 +7,9 @@ import { cn } from "@/lib/utils";
 const statusMessageVariants = cva("rounded-lg border px-4 py-3 text-sm leading-6", {
   variants: {
     variant: {
-      info: "border-blue-200 bg-blue-50 text-blue-900",
-      success: "border-lime-300 bg-lime-50 text-slate-900",
-      error: "border-red-200 bg-red-50 text-red-900",
+      info: "border-brand-blue/40 bg-primary/10 text-foreground",
+      success: "border-brand-green/60 bg-secondary/20 text-foreground",
+      error: "border-red-400/60 bg-red-950/20 text-red-700",
     },
   },
   defaultVariants: {

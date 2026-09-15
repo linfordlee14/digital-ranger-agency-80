@@ -53,7 +53,7 @@ const trustIcons = [UserRound, MapPin, Code2, ShieldCheck];
 export default function HomePage() {
   return (
     <main id="main-content">
-      <Section className="overflow-hidden bg-slate-50 py-14 sm:py-20 lg:py-24">
+      <Section className="overflow-hidden bg-muted/60 py-14 sm:py-20 lg:py-24">
         <Container>
           <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(20rem,0.75fr)] lg:gap-16">
             <div className="max-w-3xl">
@@ -69,7 +69,7 @@ export default function HomePage() {
                   See how the process works
                 </ButtonLink>
               </div>
-              <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-600">
+              <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground">
                 <span className="inline-flex items-center gap-2">
                   <CircleDot aria-hidden="true" className="size-3.5 text-brand-blue" />
                   One workflow at a time
@@ -81,7 +81,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <aside className="rounded-xl border border-slate-200 bg-white p-6 shadow-card sm:p-8" aria-label="Automation Audit starting point">
+            <aside className="rounded-xl border border-border bg-card p-6 shadow-card sm:p-8" aria-label="Automation Audit starting point">
               <div className="flex items-start justify-between gap-4">
                 <SmallText className="font-semibold uppercase tracking-wide text-brand-blue">Automation Audit</SmallText>
                 <Badge variant="info">{homeContent.audit.price}</Badge>
@@ -96,18 +96,18 @@ export default function HomePage() {
                   ["03", "Next step", "What is worth exploring?"],
                 ].map(([number, title, description], index) => (
                   <div key={number}>
-                    <div className="flex items-center gap-3 rounded-lg border border-slate-200 bg-slate-50 p-3">
-                      <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xs font-bold text-brand-blue">{number}</span>
+                    <div className="flex items-center gap-3 rounded-lg border border-border bg-muted p-3">
+                      <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/15 text-xs font-bold text-brand-blue">{number}</span>
                       <div>
-                        <p className="text-sm font-semibold text-slate-900">{title}</p>
-                        <p className="text-xs leading-5 text-slate-600">{description}</p>
+                        <p className="text-sm font-semibold text-foreground">{title}</p>
+                        <p className="text-xs leading-5 text-muted-foreground">{description}</p>
                       </div>
                     </div>
                     {index < 2 ? <ArrowDown aria-hidden="true" className="mx-auto my-1 size-4 text-slate-400" /> : null}
                   </div>
                 ))}
               </div>
-              <div className="mt-6 border-t border-slate-200 pt-5">
+              <div className="mt-6 border-t border-border pt-5">
                 <SmallText>Paid discovery, before a build is discussed.</SmallText>
               </div>
             </aside>
@@ -129,7 +129,7 @@ export default function HomePage() {
               return (
                 <Card className="h-full" key={problem.title}>
                   <CardHeader>
-                    <div className="flex size-10 items-center justify-center rounded-lg bg-blue-50">
+                    <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10">
                       <Icon aria-hidden="true" className="size-5 text-brand-blue" />
                     </div>
                     <CardTitle>{problem.title}</CardTitle>
@@ -142,7 +142,7 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section className="bg-slate-50" aria-labelledby="solutions-heading">
+      <Section className="bg-muted/60" aria-labelledby="solutions-heading">
         <Container>
           <SectionHeading
             description="Linfy can explore a combination of approaches, based on the workflow rather than a predetermined tool."
@@ -156,7 +156,7 @@ export default function HomePage() {
               return (
                 <Card className="h-full shadow-none" key={solution.title}>
                   <CardHeader>
-                    <div className="flex size-10 items-center justify-center rounded-lg bg-blue-50">
+                    <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10">
                       <Icon aria-hidden="true" className="size-5 text-brand-blue" />
                     </div>
                     <CardTitle>{solution.title}</CardTitle>
@@ -181,7 +181,7 @@ export default function HomePage() {
               <Heading as="h2" className="mt-3" id="audit-heading">
                 Start with a clearer picture of the work.
               </Heading>
-              <p className="mt-5 font-display text-3xl font-semibold tracking-[-0.025em] text-slate-900">{homeContent.audit.price}</p>
+               <p className="mt-5 font-display text-3xl font-semibold tracking-[-0.025em] text-foreground">{homeContent.audit.price}</p>
               <Body className="mt-4">{homeContent.audit.audience}</Body>
               <ButtonLink className="mt-8" data-analytics-event="assessment_cta_clicked" href="/assessment?source=homepage-audit" size="large">
                 Start an Automation Audit
@@ -197,7 +197,7 @@ export default function HomePage() {
                 <CardContent>
                   <ul className="space-y-3">
                     {homeContent.audit.deliverables.map((deliverable) => (
-                      <li className="flex gap-3 text-base leading-7 text-slate-700" key={deliverable}>
+                       <li className="flex gap-3 text-base leading-7 text-foreground" key={deliverable}>
                         <Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-brand-blue" />
                         <span>{deliverable}</span>
                       </li>
@@ -222,7 +222,7 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section className="bg-slate-50" id="how-it-works" aria-labelledby="how-it-works-heading">
+      <Section className="bg-muted/60" id="how-it-works" aria-labelledby="how-it-works-heading">
         <Container>
           <SectionHeading
             align="center"
@@ -233,10 +233,10 @@ export default function HomePage() {
           />
           <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {homeContent.process.map((step, index) => (
-              <li className="relative rounded-xl border border-slate-200 bg-white p-6" key={step.title}>
+              <li className="relative rounded-xl border border-border bg-card p-6" key={step.title}>
                 <div className="flex items-center gap-3">
                   <span className="flex size-9 items-center justify-center rounded-full bg-brand-blue text-sm font-bold text-white">0{index + 1}</span>
-                  <div className="h-px flex-1 bg-slate-200 lg:hidden" />
+                  <div className="h-px flex-1 bg-border lg:hidden" />
                 </div>
                 <Heading as="h3" className="mt-5">
                   {step.title}
@@ -250,7 +250,7 @@ export default function HomePage() {
 
       <Section aria-labelledby="proof-heading">
         <Container>
-          <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-card sm:p-8 lg:flex lg:items-end lg:justify-between lg:gap-12">
+          <div className="rounded-xl border border-border bg-card p-6 shadow-card sm:p-8 lg:flex lg:items-end lg:justify-between lg:gap-12">
             <div className="max-w-2xl">
               <Eyebrow>Proof, published carefully</Eyebrow>
               <Heading as="h2" className="mt-3" id="proof-heading">
@@ -268,7 +268,7 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section className="bg-slate-50" aria-labelledby="why-linfy-heading">
+      <Section className="bg-muted/60" aria-labelledby="why-linfy-heading">
         <Container>
           <SectionHeading
             description="These are the principles Linfy intends to demonstrate through the engagement, not claims of being the only or best option."
@@ -301,8 +301,8 @@ export default function HomePage() {
             {homeContent.trust.map((item, index) => {
               const Icon = trustIcons[index];
               return (
-                <div className="border-t border-slate-200 pt-5" key={item.title}>
-                  <div className="flex size-10 items-center justify-center rounded-lg bg-blue-50">
+                <div className="border-t border-border pt-5" key={item.title}>
+                  <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10">
                     <Icon aria-hidden="true" className="size-5 text-brand-blue" />
                   </div>
                   <Heading as="h3" className="mt-4">
@@ -316,7 +316,7 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section className="bg-slate-50" aria-labelledby="faq-heading">
+      <Section className="bg-muted/60" aria-labelledby="faq-heading">
         <Container className="max-w-3xl">
           <SectionHeading eyebrow="Questions, answered plainly" id="faq-heading" title="Before you decide to start." />
           <div className="mt-8">
