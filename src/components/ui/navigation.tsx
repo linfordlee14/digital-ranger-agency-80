@@ -36,7 +36,7 @@ interface MobileNavigationProps {
 export function MobileNavigation({ items }: MobileNavigationProps) {
   return (
     <details className="relative lg:hidden">
-      <summary className="list-none rounded-md px-3 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-100 [&::-webkit-details-marker]:hidden">
+      <summary className="list-none rounded-md px-3 py-2 text-sm font-semibold text-slate-800 transition-colors hover:bg-slate-100 [&::-webkit-details-marker]:hidden">
         Menu
       </summary>
       <NavigationLinks

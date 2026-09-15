@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 
 import {
   ArrowRight,
+  ArrowDown,
   BarChart3,
+  CircleDot,
   BrainCircuit,
   Check,
   ClipboardList,
@@ -20,6 +22,7 @@ import {
 import { SectionHeading } from "@/components/home/section-heading";
 import { ButtonLink } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Disclosure } from "@/components/ui/disclosure";
 import { Container, Section } from "@/components/ui/layout";
 import { TextLink } from "@/components/ui/link";
@@ -66,14 +69,44 @@ export default function HomePage() {
                   See how the process works
                 </ButtonLink>
               </div>
+              <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-600">
+                <span className="inline-flex items-center gap-2">
+                  <CircleDot aria-hidden="true" className="size-3.5 text-brand-blue" />
+                  One workflow at a time
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <CircleDot aria-hidden="true" className="size-3.5 text-brand-blue" />
+                  No build commitment assumed
+                </span>
+              </div>
             </div>
 
             <aside className="rounded-xl border border-slate-200 bg-white p-6 shadow-card sm:p-8" aria-label="Automation Audit starting point">
-              <SmallText className="font-semibold uppercase tracking-wide text-brand-blue">Automation Audit</SmallText>
-              <p className="mt-3 font-display text-3xl font-semibold tracking-[-0.025em] text-slate-900">{homeContent.audit.price}</p>
-              <Body className="mt-4">
-                Describe one workflow that feels too manual. The audit creates a structured place to examine possible next steps.
-              </Body>
+              <div className="flex items-start justify-between gap-4">
+                <SmallText className="font-semibold uppercase tracking-wide text-brand-blue">Automation Audit</SmallText>
+                <Badge variant="info">{homeContent.audit.price}</Badge>
+              </div>
+              <Heading as="h2" className="mt-4 text-2xl">
+                One workflow. A clearer next step.
+              </Heading>
+              <div className="mt-6 space-y-3" aria-label="Proposed audit flow">
+                {[
+                  ["01", "Manual workflow", "What keeps repeating?"],
+                  ["02", "Current tools", "Where does work move?"],
+                  ["03", "Next step", "What is worth exploring?"],
+                ].map(([number, title, description], index) => (
+                  <div key={number}>
+                    <div className="flex items-center gap-3 rounded-lg border border-slate-200 bg-slate-50 p-3">
+                      <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xs font-bold text-brand-blue">{number}</span>
+                      <div>
+                        <p className="text-sm font-semibold text-slate-900">{title}</p>
+                        <p className="text-xs leading-5 text-slate-600">{description}</p>
+                      </div>
+                    </div>
+                    {index < 2 ? <ArrowDown aria-hidden="true" className="mx-auto my-1 size-4 text-slate-400" /> : null}
+                  </div>
+                ))}
+              </div>
               <div className="mt-6 border-t border-slate-200 pt-5">
                 <SmallText>Paid discovery, before a build is discussed.</SmallText>
               </div>
@@ -94,9 +127,11 @@ export default function HomePage() {
             {homeContent.problems.map((problem, index) => {
               const Icon = problemIcons[index];
               return (
-                <Card key={problem.title}>
+                <Card className="h-full" key={problem.title}>
                   <CardHeader>
-                    <Icon aria-hidden="true" className="size-6 text-brand-blue" />
+                    <div className="flex size-10 items-center justify-center rounded-lg bg-blue-50">
+                      <Icon aria-hidden="true" className="size-5 text-brand-blue" />
+                    </div>
                     <CardTitle>{problem.title}</CardTitle>
                     <CardDescription>{problem.description}</CardDescription>
                   </CardHeader>
@@ -119,9 +154,11 @@ export default function HomePage() {
             {homeContent.solutions.map((solution, index) => {
               const Icon = solutionIcons[index];
               return (
-                <Card className="shadow-none" key={solution.title}>
+                <Card className="h-full shadow-none" key={solution.title}>
                   <CardHeader>
-                    <Icon aria-hidden="true" className="size-6 text-brand-blue" />
+                    <div className="flex size-10 items-center justify-center rounded-lg bg-blue-50">
+                      <Icon aria-hidden="true" className="size-5 text-brand-blue" />
+                    </div>
                     <CardTitle>{solution.title}</CardTitle>
                     <CardDescription>{solution.description}</CardDescription>
                   </CardHeader>
@@ -196,9 +233,12 @@ export default function HomePage() {
           />
           <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {homeContent.process.map((step, index) => (
-              <li className="rounded-xl border border-slate-200 bg-white p-6" key={step.title}>
-                <p className="text-sm font-semibold text-brand-blue">0{index + 1}</p>
-                <Heading as="h3" className="mt-4">
+              <li className="relative rounded-xl border border-slate-200 bg-white p-6" key={step.title}>
+                <div className="flex items-center gap-3">
+                  <span className="flex size-9 items-center justify-center rounded-full bg-brand-blue text-sm font-bold text-white">0{index + 1}</span>
+                  <div className="h-px flex-1 bg-slate-200 lg:hidden" />
+                </div>
+                <Heading as="h3" className="mt-5">
                   {step.title}
                 </Heading>
                 <SmallText className="mt-3">{step.description}</SmallText>
@@ -261,8 +301,10 @@ export default function HomePage() {
             {homeContent.trust.map((item, index) => {
               const Icon = trustIcons[index];
               return (
-                <div key={item.title}>
-                  <Icon aria-hidden="true" className="size-5 text-brand-blue" />
+                <div className="border-t border-slate-200 pt-5" key={item.title}>
+                  <div className="flex size-10 items-center justify-center rounded-lg bg-blue-50">
+                    <Icon aria-hidden="true" className="size-5 text-brand-blue" />
+                  </div>
                   <Heading as="h3" className="mt-4">
                     {item.title}
                   </Heading>

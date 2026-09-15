@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 
 import { ArrowLeft, ArrowRight, CheckCircle2, CircleAlert } from "lucide-react";
 
@@ -152,9 +152,16 @@ export function AssessmentForm({ sourceCta }: AssessmentFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [values, setValues] = useState<AssessmentFormValues>({ ...emptyAssessmentFormValues, sourceCta });
+  const stepHeadingRef = useRef<HTMLHeadingElement>(null);
+  const hasMountedRef = useRef(false);
 
   const step = assessmentSteps[currentStep];
   const progress = ((currentStep + 1) / assessmentSteps.length) * 100;
+
+  useEffect(() => {
+    if (hasMountedRef.current) stepHeadingRef.current?.focus();
+    hasMountedRef.current = true;
+  }, [currentStep]);
 
   function updateText<K extends keyof AssessmentFormValues>(field: K, value: AssessmentFormValues[K]) {
     setValues((previous) => ({ ...previous, [field]: value }));
@@ -261,12 +268,12 @@ export function AssessmentForm({ sourceCta }: AssessmentFormProps) {
         <div aria-hidden="true" className="mt-3 h-2 overflow-hidden rounded-full bg-slate-200">
           <div className="h-full rounded-full bg-brand-blue transition-[width] motion-reduce:transition-none" style={{ width: `${progress}%` }} />
         </div>
-        <ol className="mt-5 flex flex-wrap gap-2" aria-label="Assessment steps">
+        <ol className="-mx-1 mt-5 flex max-w-full flex-nowrap gap-2 overflow-x-auto px-1 pb-1 lg:flex-wrap" aria-label="Assessment steps">
           {assessmentSteps.map((item, index) => (
-            <li key={item.id}>
+            <li className="shrink-0" key={item.id}>
               <button
                 aria-current={index === currentStep ? "step" : undefined}
-                className="rounded-md px-2 py-1 text-xs font-medium text-slate-600 hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-60"
+                className="whitespace-nowrap rounded-md px-2 py-1 text-xs font-medium text-slate-600 hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-60"
                 disabled={index > currentStep}
                 onClick={() => setCurrentStep(index)}
                 type="button"
@@ -291,7 +298,7 @@ export function AssessmentForm({ sourceCta }: AssessmentFormProps) {
 
       <Card>
         <CardHeader>
-          <CardTitle>{step.label}</CardTitle>
+          <CardTitle aria-live="polite" ref={stepHeadingRef} tabIndex={-1}>{step.label}</CardTitle>
         </CardHeader>
         <CardContent>
           {currentStep === 0 ? (
@@ -454,17 +461,17 @@ export function AssessmentForm({ sourceCta }: AssessmentFormProps) {
       </Card>
 
       <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <Button disabled={currentStep === 0 || isSubmitting} onClick={moveToPreviousStep} type="button" variant="tertiary">
+        <Button className="w-full sm:w-auto" disabled={currentStep === 0 || isSubmitting} onClick={moveToPreviousStep} type="button" variant="tertiary">
           <ArrowLeft aria-hidden="true" className="size-4" />
           Back
         </Button>
         {currentStep === assessmentSteps.length - 1 ? (
-          <Button data-analytics-event="assessment_submitted" isLoading={isSubmitting} size="large" type="submit">
+          <Button className="w-full sm:w-auto" data-analytics-event="assessment_submitted" isLoading={isSubmitting} size="large" type="submit">
             Submit assessment
             <ArrowRight aria-hidden="true" className="size-4" />
           </Button>
         ) : (
-          <Button data-analytics-event="assessment_step_completed" onClick={moveToNextStep} size="large" type="button">
+          <Button className="w-full sm:w-auto" data-analytics-event="assessment_step_completed" onClick={moveToNextStep} size="large" type="button">
             Continue to {assessmentSteps[currentStep + 1]?.label.toLowerCase()}
             <ArrowRight aria-hidden="true" className="size-4" />
           </Button>

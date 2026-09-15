@@ -1,3 +1,4 @@
+import * as React from "react";
 import type { ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
@@ -5,7 +6,7 @@ import { cn } from "@/lib/utils";
 export function Card({ className, ...props }: ComponentPropsWithoutRef<"article">) {
   return (
     <article
-      className={cn("rounded-xl border border-slate-200 bg-white shadow-card", className)}
+      className={cn("rounded-xl border border-slate-200 bg-white shadow-card transition-[border-color,box-shadow] duration-200 hover:border-slate-300 hover:shadow-card-hover", className)}
       {...props}
     />
   );
@@ -15,9 +16,11 @@ export function CardHeader({ className, ...props }: ComponentPropsWithoutRef<"di
   return <div className={cn("space-y-2 p-6 sm:p-8", className)} {...props} />;
 }
 
-export function CardTitle({ className, ...props }: ComponentPropsWithoutRef<"h3">) {
-  return <h3 className={cn("text-heading-3", className)} {...props} />;
-}
+export const CardTitle = React.forwardRef<HTMLHeadingElement, ComponentPropsWithoutRef<"h3">>(
+  ({ className, ...props }, ref) => <h3 className={cn("text-heading-3", className)} ref={ref} {...props} />,
+);
+
+CardTitle.displayName = "CardTitle";
 
 export function CardDescription({ className, ...props }: ComponentPropsWithoutRef<"p">) {
   return <p className={cn("text-small", className)} {...props} />;

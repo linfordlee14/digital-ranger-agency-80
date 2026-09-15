@@ -64,6 +64,7 @@ export default {
       },
       boxShadow: {
         card: "0 1px 2px rgb(17 24 39 / 0.06), 0 8px 24px rgb(17 24 39 / 0.05)",
+        "card-hover": "0 2px 4px rgb(17 24 39 / 0.08), 0 14px 32px rgb(17 24 39 / 0.08)",
       },
     },
   },
