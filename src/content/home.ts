@@ -141,7 +141,7 @@ export const homeContent = {
   ] satisfies ContentItem[],
   trust: [
     {
-      description: "Linfy Tech Solutions is founded and led by Linford Musiyambodza, publicly known as Linford Lee.",
+      description: "Linfy Tech Solutions is founded and led by Linford Musiyambodza.",
       status: "fact" as const,
       title: "Founder-led",
     },

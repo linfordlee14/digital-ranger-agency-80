@@ -9,6 +9,7 @@ import {
   FileText,
   GitMerge,
   MapPin,
+  MessageCircle,
   Search,
   ShieldCheck,
   UserRound,
@@ -54,7 +55,7 @@ export default function AboutPage() {
               <Eyebrow>{aboutContent.hero.eyebrow}</Eyebrow>
               <Display className="mt-4">{aboutContent.hero.title}</Display>
               <Body className="mt-6 max-w-2xl text-lg leading-8">{aboutContent.hero.description}</Body>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                 <ButtonLink href="/assessment?source=about-hero" size="large">
                   Start an Automation Audit
                   <ArrowRight aria-hidden="true" className="size-4" />
@@ -62,7 +63,12 @@ export default function AboutPage() {
                 <ButtonLink href="/solutions" size="large" variant="secondary">
                   See our solutions
                 </ButtonLink>
+                <ButtonLink href="https://wa.me/27613960466" rel="noopener noreferrer" size="large" target="_blank" variant="secondary">
+                  <MessageCircle aria-hidden="true" className="size-4" />
+                  Chat with Linfy on WhatsApp
+                </ButtonLink>
               </div>
+              <p className="mt-3 text-sm text-muted-foreground">Have a question before starting? Message us directly on WhatsApp.</p>
             </div>
 
             <aside className="rounded-xl border border-border bg-card p-6 shadow-card sm:p-8" aria-label="Linfy company context">

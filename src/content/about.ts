@@ -48,7 +48,7 @@ export const aboutContent = {
   },
   hero: {
     description:
-      "Linfy Tech Solutions is a founder-led technology company focused on understanding operational problems before exploring practical automation, AI, integrations, or custom software.",
+      "Linfy Tech Solutions is a founder-led technology company for small and growing businesses, business owners, and teams dealing with repetitive administration, follow-ups, reporting, customer communication, or disconnected systems. Linfy helps identify opportunities to simplify workflows and apply appropriate automation, AI, integrations, or custom software.",
     eyebrow: "About Linfy Tech",
     title: "Practical technology starts with the work that needs to move.",
   },
