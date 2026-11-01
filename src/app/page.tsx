@@ -12,6 +12,7 @@ import {
   FileSpreadsheet,
   GitMerge,
   MapPin,
+  MessageCircle,
   MessagesSquare,
   Plug,
   ShieldCheck,
@@ -60,7 +61,7 @@ export default function HomePage() {
               <Eyebrow>{homeContent.hero.eyebrow}</Eyebrow>
               <Display className="mt-4">{homeContent.hero.title}</Display>
               <Body className="mt-6 max-w-2xl text-lg leading-8">{homeContent.hero.description}</Body>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                 <ButtonLink data-analytics-event="assessment_cta_clicked" href="/assessment?source=homepage-hero" size="large">
                   {site.primaryCta}
                   <ArrowRight aria-hidden="true" className="size-4" />
@@ -68,7 +69,12 @@ export default function HomePage() {
                 <ButtonLink href="#how-it-works" size="large" variant="secondary">
                   See how the process works
                 </ButtonLink>
+                <ButtonLink href="https://wa.me/27613960466" rel="noopener noreferrer" size="large" target="_blank" variant="secondary">
+                  <MessageCircle aria-hidden="true" className="size-4" />
+                  Chat with Linfy on WhatsApp
+                </ButtonLink>
               </div>
+              <p className="mt-3 text-sm text-muted-foreground">Have a question before starting? Message us directly on WhatsApp.</p>
               <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground">
                 <span className="inline-flex items-center gap-2">
                   <CircleDot aria-hidden="true" className="size-3.5 text-brand-blue" />
