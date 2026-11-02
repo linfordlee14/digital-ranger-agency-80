@@ -85,7 +85,7 @@ export const homeContent = {
   },
   proof: {
     description:
-      "No case study is published here until its project facts and permission to share them are confirmed. Linfy will not replace missing proof with invented metrics, testimonials, or outcomes.",
+      "Explore Linfy Beacon, a locally developed prototype for business discovery, website assessment, and considered outreach drafting.",
     linkLabel: "Visit case studies",
     status: "unknown" as const,
     title: "Case studies should show what actually happened.",

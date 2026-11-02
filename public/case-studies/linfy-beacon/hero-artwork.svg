@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Linfy Beacon conceptual case study artwork</title>
+  <desc id="desc">An abstract Linfy Beacon signal illustrates separate local discovery, assessment, drafting and record-keeping modules.</desc>
+  <defs>
+    <linearGradient id="heroBlue" x1="212" y1="120" x2="1306" y2="774" gradientUnits="userSpaceOnUse"><stop stop-color="#0A6ED1"/><stop offset="1" stop-color="#72B7FF"/></linearGradient>
+    <linearGradient id="heroGlow" x1="694" y1="254" x2="1037" y2="611" gradientUnits="userSpaceOnUse"><stop stop-color="#A3E635"/><stop offset="1" stop-color="#0A6ED1"/></linearGradient>
+    <filter id="heroShadow" x="0" y="0" width="1600" height="900" filterUnits="userSpaceOnUse"><feDropShadow dx="0" dy="26" stdDeviation="28" flood-color="#111827" flood-opacity=".14"/></filter>
+    <pattern id="heroGrid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" stroke="#0A6ED1" stroke-opacity=".075"/></pattern>
+  </defs>
+  <rect width="1600" height="900" rx="36" fill="#F8FAFC"/>
+  <rect width="1600" height="900" rx="36" fill="url(#heroGrid)"/>
+  <circle cx="799" cy="452" r="334" stroke="#0A6ED1" stroke-opacity=".10" stroke-width="2"/>
+  <circle cx="799" cy="452" r="248" stroke="#0A6ED1" stroke-opacity=".14" stroke-width="2" stroke-dasharray="5 12"/>
+  <circle cx="799" cy="452" r="156" fill="#fff" stroke="#D9E4F1" stroke-width="2" filter="url(#heroShadow)"/>
+  <circle cx="799" cy="452" r="112" fill="url(#heroBlue)"/>
+  <path d="M760 452h78M799 413v78" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="799" cy="452" r="70" stroke="#fff" stroke-opacity=".32" stroke-width="2"/>
+  <path d="M799 221v-51M1003 452h51M799 683v51M596 452h-51" stroke="#0A6ED1" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="799" cy="170" r="8" fill="#A3E635"/>
+  <circle cx="1054" cy="452" r="8" fill="#FF7A2D"/>
+  <circle cx="799" cy="734" r="8" fill="#A3E635"/>
+  <circle cx="545" cy="452" r="8" fill="#FF7A2D"/>
+  <g filter="url(#heroShadow)">
+    <rect x="130" y="205" width="286" height="154" rx="20" fill="#fff" stroke="#D9E4F1" stroke-width="2"/>
+    <rect x="165" y="241" width="42" height="42" rx="12" fill="#EAF3FD"/>
+    <path d="M176 264h20M186 254v20" stroke="#0A6ED1" stroke-width="3" stroke-linecap="round"/>
+    <text x="225" y="261" fill="#111827" font-family="Aptos, Arial, sans-serif" font-size="17" font-weight="700">DISCOVER</text>
+    <text x="165" y="316" fill="#6B7280" font-family="Aptos, Arial, sans-serif" font-size="15">Public business data</text>
+  </g>
+  <g filter="url(#heroShadow)">
+    <rect x="1184" y="205" width="286" height="154" rx="20" fill="#fff" stroke="#D9E4F1" stroke-width="2"/>
+    <rect x="1219" y="241" width="42" height="42" rx="12" fill="#EFF8D8"/>
+    <path d="m1230 263 8 8 14-18" stroke="#547D0C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1279" y="261" fill="#111827" font-family="Aptos, Arial, sans-serif" font-size="17" font-weight="700">ASSESS</text>
+    <text x="1219" y="316" fill="#6B7280" font-family="Aptos, Arial, sans-serif" font-size="15">Website signals, assessed</text>
+  </g>
+  <g filter="url(#heroShadow)">
+    <rect x="130" y="544" width="286" height="154" rx="20" fill="#fff" stroke="#D9E4F1" stroke-width="2"/>
+    <rect x="165" y="580" width="42" height="42" rx="12" fill="#FFF0E8"/>
+    <path d="M176 592h20v16h-20zM176 594l10 7 10-7" stroke="#C14E0B" stroke-width="2.5" stroke-linejoin="round"/>
+    <text x="225" y="600" fill="#111827" font-family="Aptos, Arial, sans-serif" font-size="17" font-weight="700">PREPARE</text>
+    <text x="165" y="655" fill="#6B7280" font-family="Aptos, Arial, sans-serif" font-size="15">Drafted with context</text>
+  </g>
+  <g filter="url(#heroShadow)">
+    <rect x="1184" y="544" width="286" height="154" rx="20" fill="#fff" stroke="#D9E4F1" stroke-width="2"/>
+    <rect x="1219" y="580" width="42" height="42" rx="12" fill="#EAF3FD"/>
+    <path d="M1231 600h18M1240 591v18" stroke="#0A6ED1" stroke-width="3" stroke-linecap="round"/>
+    <text x="1279" y="600" fill="#111827" font-family="Aptos, Arial, sans-serif" font-size="17" font-weight="700">TRACK</text>
+    <text x="1219" y="655" fill="#6B7280" font-family="Aptos, Arial, sans-serif" font-size="15">Records and status</text>
+  </g>
+  <path d="M416 282c112 30 184 84 251 123M1184 282c-112 30-184 84-251 123M416 621c112-30 184-84 251-123M1184 621c-112-30-184-84-251-123" stroke="url(#heroGlow)" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 12"/>
+  <rect x="80" y="72" width="265" height="38" rx="19" fill="#0A6ED1"/>
+  <text x="102" y="97" fill="#fff" font-family="Aptos, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1.2">CONCEPTUAL CASE STUDY ARTWORK</text>
+  <text x="80" y="803" fill="#111827" font-family="Aptos Display, Arial, sans-serif" font-size="48" font-weight="700" letter-spacing="-1.4">Linfy Beacon</text>
+  <text x="80" y="844" fill="#6B7280" font-family="Aptos, Arial, sans-serif" font-size="21">A local business discovery and outreach prototype.</text>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="800" viewBox="0 0 1600 800" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Linfy Beacon conceptual workflow</title>
+  <desc id="desc">Separate local discovery, assessment, drafting and sender modules, with planned orchestration and event handling shown as dashed connections.</desc>
+  <defs><filter id="flowShadow" x="0" y="0" width="1600" height="800" filterUnits="userSpaceOnUse"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#111827" flood-opacity=".10"/></filter><marker id="planArrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 10 5 0 10z" fill="#FF7A2D"/></marker></defs>
+  <rect width="1600" height="800" rx="32" fill="#F8FAFC"/>
+  <text x="88" y="112" fill="#0A6ED1" font-family="Aptos, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1.2">CONCEPTUAL WORKFLOW</text>
+  <text x="88" y="164" fill="#111827" font-family="Aptos Display, Arial, sans-serif" font-size="42" font-weight="700">From discovery to a considered outreach draft.</text>
+  <text x="88" y="202" fill="#6B7280" font-family="Aptos, Arial, sans-serif" font-size="19">Separate local modules. Orchestration and event handling remain planned.</text>
+  <g stroke="#FF7A2D" stroke-width="3" stroke-linecap="round" stroke-dasharray="7 10" marker-end="url(#planArrow)">
+    <path d="M323 408h49"/><path d="M607 408h49"/><path d="M891 408h49"/><path d="M1175 408h49"/>
+  </g>
+  <g filter="url(#flowShadow)" font-family="Aptos, Arial, sans-serif">
+    <rect x="88" y="310" width="235" height="196" rx="18" fill="#fff" stroke="#D9E4F1" stroke-width="2"/><rect x="112" y="336" width="44" height="44" rx="12" fill="#EAF3FD"/><path d="M123 358h22M134 347v22" stroke="#0A6ED1" stroke-width="3" stroke-linecap="round"/><text x="112" y="421" fill="#111827" font-size="19" font-weight="700">Discover</text><text x="112" y="450" fill="#6B7280" font-size="14">Public map data</text><text x="112" y="475" fill="#6B7280" font-size="14">Manual module run</text>
+    <rect x="372" y="310" width="235" height="196" rx="18" fill="#fff" stroke="#D9E4F1" stroke-width="2"/><rect x="396" y="336" width="44" height="44" rx="12" fill="#EFF8D8"/><path d="M408 358h20M418 348v20" stroke="#547D0C" stroke-width="3" stroke-linecap="round"/><text x="396" y="421" fill="#111827" font-size="19" font-weight="700">Track</text><text x="396" y="450" fill="#6B7280" font-size="14">Lead state in database</text><text x="396" y="475" fill="#6B7280" font-size="14">Status updates by modules</text>
+    <rect x="656" y="310" width="235" height="196" rx="18" fill="#fff" stroke="#D9E4F1" stroke-width="2"/><rect x="680" y="336" width="44" height="44" rx="12" fill="#FFF0E8"/><path d="m692 359 7 7 13-16" stroke="#C14E0B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="680" y="421" fill="#111827" font-size="19" font-weight="700">Assess</text><text x="680" y="450" fill="#6B7280" font-size="14">Website signal heuristics</text><text x="680" y="475" fill="#6B7280" font-size="14">Manual module run</text>
+    <rect x="940" y="310" width="235" height="196" rx="18" fill="#fff" stroke="#D9E4F1" stroke-width="2"/><rect x="964" y="336" width="44" height="44" rx="12" fill="#EAF3FD"/><path d="M976 349h20v16h-20zM976 351l10 7 10-7" stroke="#0A6ED1" stroke-width="2.5"/><text x="964" y="421" fill="#111827" font-size="19" font-weight="700">Draft</text><text x="964" y="450" fill="#6B7280" font-size="14">AI-assisted finding rewrite</text><text x="964" y="475" fill="#6B7280" font-size="14">Template substitution</text>
+    <rect x="1224" y="310" width="235" height="196" rx="18" fill="#111827" stroke="#111827" stroke-width="2"/><rect x="1248" y="336" width="44" height="44" rx="12" fill="#243244"/><path d="M1260 358h20M1270 348v20" stroke="#A3E635" stroke-width="3" stroke-linecap="round"/><text x="1248" y="421" fill="#fff" font-size="19" font-weight="700">Send</text><text x="1248" y="450" fill="#C7D2E0" font-size="14">Manual function invocation</text><text x="1248" y="475" fill="#C7D2E0" font-size="14">Best-effort send log</text>
+  </g>
+  <path d="M1342 526v92" stroke="#FF7A2D" stroke-width="3" stroke-linecap="round" stroke-dasharray="7 10" marker-end="url(#planArrow)"/>
+  <rect x="1167" y="644" width="350" height="82" rx="16" fill="#FFF7F2" stroke="#FFD6BE" stroke-width="2"/>
+  <text x="1193" y="678" fill="#C14E0B" font-family="Aptos, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing=".8">PLANNED, NOT SHOWN AS ACTIVE</text>
+  <text x="1193" y="706" fill="#6B7280" font-family="Aptos, Arial, sans-serif" font-size="14">Event handling, reply routing, suppression updates</text>
+  <rect x="88" y="605" width="928" height="92" rx="16" fill="#fff" stroke="#E5E7EB"/>
+  <circle cx="126" cy="651" r="9" fill="#0A6ED1"/><text x="152" y="657" fill="#374151" font-family="Aptos, Arial, sans-serif" font-size="15">Cards: separate modules in local source.</text>
+  <circle cx="510" cy="651" r="9" fill="#FF7A2D"/><text x="536" y="657" fill="#374151" font-family="Aptos, Arial, sans-serif" font-size="15">Dashed arrows: planned connections.</text>
+</svg>

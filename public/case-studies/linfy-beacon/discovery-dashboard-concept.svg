@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="960" viewBox="0 0 1440 960" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Conceptual business discovery dashboard</title>
+  <desc id="desc">An illustrative Linfy Beacon discovery dashboard with generic business categories, not live data or an implemented interface.</desc>
+  <defs><filter id="dashShadow" x="0" y="0" width="1440" height="960" filterUnits="userSpaceOnUse"><feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#111827" flood-opacity=".10"/></filter></defs>
+  <rect width="1440" height="960" rx="28" fill="#F3F4F6"/>
+  <rect x="54" y="54" width="1332" height="852" rx="22" fill="#fff" filter="url(#dashShadow)"/>
+  <rect x="54" y="54" width="260" height="852" rx="22" fill="#111827"/>
+  <rect x="314" y="54" width="1072" height="90" fill="#fff"/>
+  <path d="M314 144h1072" stroke="#E5E7EB"/>
+  <text x="88" y="108" fill="#fff" font-family="Aptos Display, Arial, sans-serif" font-size="23" font-weight="700">Linfy <tspan fill="#A3E635">Beacon</tspan></text>
+  <text x="88" y="143" fill="#A3E635" font-family="Aptos, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1.2">CONCEPTUAL INTERFACE</text>
+  <rect x="78" y="195" width="212" height="46" rx="10" fill="#243244"/>
+  <circle cx="102" cy="218" r="7" fill="#A3E635"/><text x="121" y="224" fill="#fff" font-family="Aptos, Arial, sans-serif" font-size="15" font-weight="700">Discovery records</text>
+  <text x="88" y="289" fill="#AAB7C7" font-family="Aptos, Arial, sans-serif" font-size="14">Assessment notes</text>
+  <text x="88" y="335" fill="#AAB7C7" font-family="Aptos, Arial, sans-serif" font-size="14">Draft generation</text>
+  <text x="88" y="381" fill="#AAB7C7" font-family="Aptos, Arial, sans-serif" font-size="14">Suppression (planned)</text>
+  <path d="M88 777h168" stroke="#344153"/><text x="88" y="814" fill="#AAB7C7" font-family="Aptos, Arial, sans-serif" font-size="13">Illustrative data only</text>
+  <text x="364" y="109" fill="#111827" font-family="Aptos Display, Arial, sans-serif" font-size="26" font-weight="700">Business discovery</text>
+  <rect x="1142" y="78" width="198" height="40" rx="20" fill="#EAF3FD"/><text x="1162" y="104" fill="#0A6ED1" font-family="Aptos, Arial, sans-serif" font-size="13" font-weight="700">PUBLIC-DATA REVIEW</text>
+  <text x="364" y="195" fill="#6B7280" font-family="Aptos, Arial, sans-serif" font-size="15">Illustrative records. Human review is not enforced by the prototype.</text>
+  <rect x="364" y="232" width="946" height="50" rx="10" fill="#F8FAFC" stroke="#E5E7EB"/>
+  <text x="388" y="263" fill="#6B7280" font-family="Aptos, Arial, sans-serif" font-size="13">Search a category or area</text>
+  <rect x="1116" y="243" width="170" height="28" rx="14" fill="#fff" stroke="#D9E4F1"/><text x="1134" y="262" fill="#0A6ED1" font-family="Aptos, Arial, sans-serif" font-size="12" font-weight="700">CONCEPT ONLY</text>
+  <g font-family="Aptos, Arial, sans-serif">
+    <rect x="364" y="316" width="946" height="80" rx="12" fill="#fff" stroke="#E5E7EB"/>
+    <circle cx="404" cy="356" r="18" fill="#EAF3FD"/><path d="M395 357h18M404 348v18" stroke="#0A6ED1" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="448" y="348" fill="#111827" font-size="16" font-weight="700">Local service business</text><text x="448" y="372" fill="#6B7280" font-size="13">Category: services · Source: public map data</text>
+    <rect x="1055" y="340" width="114" height="30" rx="15" fill="#EFF8D8"/><text x="1075" y="360" fill="#547D0C" font-size="12" font-weight="700">NEW RECORD</text><text x="1200" y="361" fill="#6B7280" font-size="13">Review</text>
+    <rect x="364" y="412" width="946" height="80" rx="12" fill="#fff" stroke="#E5E7EB"/>
+    <circle cx="404" cy="452" r="18" fill="#FFF0E8"/><path d="M397 445h14v14h-14zM397 447l7 5 7-5" stroke="#C14E0B" stroke-width="2"/>
+    <text x="448" y="444" fill="#111827" font-size="16" font-weight="700">Independent retailer</text><text x="448" y="468" fill="#6B7280" font-size="13">Category: retail · Source: public map data</text>
+    <rect x="1055" y="436" width="114" height="30" rx="15" fill="#EAF3FD"/><text x="1073" y="456" fill="#0A6ED1" font-size="12" font-weight="700">ASSESS NEXT</text><text x="1200" y="457" fill="#6B7280" font-size="13">Review</text>
+    <rect x="364" y="508" width="946" height="80" rx="12" fill="#fff" stroke="#E5E7EB"/>
+    <circle cx="404" cy="548" r="18" fill="#F3F4F6"/><path d="M394 548h20M404 538v20" stroke="#6B7280" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="448" y="540" fill="#111827" font-size="16" font-weight="700">Hospitality venue</text><text x="448" y="564" fill="#6B7280" font-size="13">Category: accommodation · Source: public map data</text>
+    <rect x="1055" y="532" width="114" height="30" rx="15" fill="#F3F4F6"/><text x="1075" y="552" fill="#6B7280" font-size="12" font-weight="700">PENDING</text><text x="1200" y="553" fill="#6B7280" font-size="13">Review</text>
+  </g>
+  <rect x="364" y="636" width="946" height="192" rx="16" fill="#F8FAFC" stroke="#E5E7EB"/>
+  <text x="394" y="678" fill="#111827" font-family="Aptos Display, Arial, sans-serif" font-size="18" font-weight="700">Review principles</text>
+  <path d="M395 714h10l7 9 13-18" stroke="#0A6ED1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><text x="438" y="724" fill="#374151" font-family="Aptos, Arial, sans-serif" font-size="14">Use public business information only.</text>
+  <path d="M395 754h10l7 9 13-18" stroke="#0A6ED1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><text x="438" y="764" fill="#374151" font-family="Aptos, Arial, sans-serif" font-size="14">Human review is recommended, but not enforced.</text>
+  <path d="M395 794h10l7 9 13-18" stroke="#0A6ED1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><text x="438" y="804" fill="#374151" font-family="Aptos, Arial, sans-serif" font-size="14">Do not treat this illustration as a record of actual leads.</text>
+</svg>

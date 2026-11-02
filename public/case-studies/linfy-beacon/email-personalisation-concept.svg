@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="960" viewBox="0 0 1440 960" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Conceptual AI-assisted email personalisation interface</title>
+  <desc id="desc">An illustrative Linfy Beacon drafting interface with an assessment note, a prompted rewrite, and a recommendation for human review that is not enforced.</desc>
+  <defs><linearGradient id="mailGrad" x1="94" y1="94" x2="1346" y2="866" gradientUnits="userSpaceOnUse"><stop stop-color="#0A6ED1"/><stop offset=".48" stop-color="#72B7FF"/><stop offset="1" stop-color="#A3E635"/></linearGradient><filter id="mailShadow" x="0" y="0" width="1440" height="960" filterUnits="userSpaceOnUse"><feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#111827" flood-opacity=".12"/></filter></defs>
+  <rect width="1440" height="960" rx="28" fill="#111827"/>
+  <path d="M0 170C300 76 418 300 690 216s373-27 750-176v920H0z" fill="url(#mailGrad)" opacity=".18"/>
+  <rect x="78" y="74" width="1284" height="812" rx="22" fill="#fff" filter="url(#mailShadow)"/>
+  <rect x="78" y="74" width="1284" height="94" rx="22" fill="#F8FAFC"/><rect x="78" y="130" width="1284" height="38" fill="#F8FAFC"/>
+  <text x="122" y="124" fill="#111827" font-family="Aptos Display, Arial, sans-serif" font-size="25" font-weight="700">Linfy Beacon</text>
+  <rect x="1084" y="102" width="230" height="36" rx="18" fill="#FFF0E8"/><text x="1110" y="125" fill="#C14E0B" font-family="Aptos, Arial, sans-serif" font-size="12" font-weight="700">CONCEPTUAL DRAFT ONLY</text>
+  <text x="122" y="225" fill="#0A6ED1" font-family="Aptos, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1.1">AI-ASSISTED PERSONALISATION</text>
+  <text x="122" y="273" fill="#111827" font-family="Aptos Display, Arial, sans-serif" font-size="34" font-weight="700">From assessed signal to a concise draft.</text>
+  <text x="122" y="307" fill="#6B7280" font-family="Aptos, Arial, sans-serif" font-size="16">Illustrative interface. It does not show an actual message, recipient, or contact record.</text>
+  <g font-family="Aptos, Arial, sans-serif">
+    <rect x="122" y="362" width="348" height="366" rx="16" fill="#F8FAFC" stroke="#E5E7EB"/>
+    <circle cx="162" cy="405" r="18" fill="#EAF3FD"/><path d="M153 405h18M162 396v18" stroke="#0A6ED1" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="196" y="411" fill="#111827" font-size="18" font-weight="700">1. Assessment note</text>
+    <text x="154" y="465" fill="#6B7280" font-size="14">Input uses assessment notes</text><text x="154" y="487" fill="#6B7280" font-size="14">that may contain multiple findings.</text>
+    <rect x="154" y="532" width="284" height="118" rx="12" fill="#fff" stroke="#D9E4F1"/>
+    <text x="176" y="568" fill="#374151" font-size="14">“A web-presence signal</text><text x="176" y="591" fill="#374151" font-size="14">is available for review</text><text x="176" y="614" fill="#374151" font-size="14">before contact.”</text>
+    <text x="154" y="686" fill="#0A6ED1" font-size="12" font-weight="700">NO CONTACT DATA SHOWN</text>
+    <rect x="546" y="362" width="348" height="366" rx="16" fill="#111827"/>
+    <circle cx="586" cy="405" r="18" fill="#243244"/><path d="M577 405h18M586 396v18" stroke="#A3E635" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="620" y="411" fill="#fff" font-size="18" font-weight="700">2. Prompted rewrite</text>
+    <text x="578" y="465" fill="#C7D2E0" font-size="14">A concise model-assisted rewrite</text><text x="578" y="487" fill="#C7D2E0" font-size="14">is requested, not guaranteed.</text>
+    <rect x="578" y="532" width="284" height="118" rx="12" fill="#1F2937" stroke="#344153"/>
+    <text x="600" y="568" fill="#A3E635" font-size="14">Prompted to be concise.</text><text x="600" y="591" fill="#A3E635" font-size="14">Review is advised</text><text x="600" y="614" fill="#A3E635" font-size="14">before outreach.</text>
+    <text x="578" y="686" fill="#A3E635" font-size="12" font-weight="700">REVIEW NOT ENFORCED</text>
+    <rect x="970" y="362" width="348" height="366" rx="16" fill="#F8FAFC" stroke="#E5E7EB"/>
+    <circle cx="1010" cy="405" r="18" fill="#FFF0E8"/><path d="M1001 405h18M1010 396v18" stroke="#C14E0B" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="1044" y="411" fill="#111827" font-size="18" font-weight="700">3. Proposed review</text>
+    <text x="1002" y="465" fill="#6B7280" font-size="14">A template supports an</text><text x="1002" y="487" fill="#6B7280" font-size="14">operator-led next step.</text>
+    <rect x="1002" y="532" width="284" height="118" rx="12" fill="#fff" stroke="#D9E4F1"/>
+    <path d="M1026 561h130M1026 586h218M1026 611h184" stroke="#D9E4F1" stroke-width="10" stroke-linecap="round"/>
+    <text x="1002" y="686" fill="#C14E0B" font-size="12" font-weight="700">SENDING IS NOT DEPICTED</text>
+  </g>
+  <rect x="122" y="780" width="1196" height="56" rx="14" fill="#EAF3FD"/>
+  <path d="M152 808h18M161 799v18" stroke="#0A6ED1" stroke-width="2.5" stroke-linecap="round"/><text x="190" y="814" fill="#0A6ED1" font-family="Aptos, Arial, sans-serif" font-size="14" font-weight="700">Conceptual visual: local source supports email drafting; production sending safeguards and response handling remain separate concerns.</text>
+</svg>
